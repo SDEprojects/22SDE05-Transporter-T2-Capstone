@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/command.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exploreLocation.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +92,7 @@
       <option name="presentableId" value="Default" />
       <updated>1663175063436</updated>
       <workItem from="1663188224552" duration="603000" />
-      <workItem from="1663188967235" duration="6654000" />
+      <workItem from="1663188967235" duration="7108000" />
     </task>
     <servers />
   </component>
