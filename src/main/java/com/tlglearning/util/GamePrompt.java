@@ -1,11 +1,10 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
-import static com.tlglearning.util.JacksonParser.parseToMap;
+import static main.java.com.tlglearning.util.JacksonParser.parseToMap;
 
 public class GamePrompt {
     // Variables

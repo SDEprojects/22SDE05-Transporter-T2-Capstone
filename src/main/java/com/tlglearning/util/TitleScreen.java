@@ -1,9 +1,6 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
-
-import static com.tlglearning.util.InputHandling.clearScreen;
+import static main.java.com.tlglearning.util.InputHandling.clearScreen;
 
 public class TitleScreen {
     private static GamePrompt prompt = new GamePrompt();

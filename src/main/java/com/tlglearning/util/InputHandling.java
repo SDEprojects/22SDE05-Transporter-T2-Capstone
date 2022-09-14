@@ -1,18 +1,20 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.tlglearning.util.GameState.newGame;
-import static com.tlglearning.util.JacksonParser.parse;
-import static com.tlglearning.util.LoadGame.load;
-import static com.tlglearning.util.Menu.helpMenu;
-import static com.tlglearning.util.SaveGame.save;
+import static main.java.com.tlglearning.util.GameState.newGame;
+import static main.java.com.tlglearning.util.JacksonParser.parse;
+import static main.java.com.tlglearning.util.Menu.helpMenu;
+import static main.java.com.tlglearning.util.SaveGame.save;
 
 public class InputHandling {
     private static GamePrompt prompt = new GamePrompt();
@@ -40,20 +42,10 @@ public class InputHandling {
                 System.exit(0);
                 break;
             case "n":
-                System.out.println("Would you like to load your saved data? Type 'y' ");
-                BufferedReader loadIn = new BufferedReader(new InputStreamReader(System.in));
-                String loadInput = loadIn.readLine().toLowerCase();
-                if (loadInput.equals("y")) {
-                    prompt.runPromptCyan("newGameHelp");
-                    prompt.runPromptCyan("newGameCommands");
-                    load();
-                } else {
-                    clearScreen();
-                    prompt.runPromptCyan("newGame");
-                    prompt.runPromptCyan("newGameHelp");
-                    prompt.runPromptCyan("newGameCommands");
-                    newGame();
-                }
+                prompt.runPromptCyan("newGame");
+                prompt.runPromptCyan("newGameHelp");
+                prompt.runPromptCyan("newGameCommands");
+                newGame();
                 break;
             default:
                 prompt.runPromptRed("error");
