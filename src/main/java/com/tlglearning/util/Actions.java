@@ -1,11 +1,11 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import static com.tlglearning.util.JacksonParser.*;
+import static main.java.com.tlglearning.util.JacksonParser.parse;
 
 public class Actions {
     private final JsonNode moveLocation;

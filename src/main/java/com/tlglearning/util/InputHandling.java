@@ -1,18 +1,21 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.tlglearning.util.GameState.newGame;
-import static com.tlglearning.util.JacksonParser.parse;
-import static com.tlglearning.util.LoadGame.load;
-import static com.tlglearning.util.Menu.helpMenu;
-import static com.tlglearning.util.SaveGame.save;
+import static main.java.com.tlglearning.util.GameState.newGame;
+import static main.java.com.tlglearning.util.JacksonParser.parse;
+import static main.java.com.tlglearning.util.LoadGame.load;
+import static main.java.com.tlglearning.util.Menu.helpMenu;
+import static main.java.com.tlglearning.util.SaveGame.save;
 
 public class InputHandling {
     private static GamePrompt prompt = new GamePrompt();

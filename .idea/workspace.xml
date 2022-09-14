@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core_databind.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM_[Changes]1/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/command.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/exploreLocation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/gameprompt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/items.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/location.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/command.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/exploreLocation.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/gameprompt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/items.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/location.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/scenarios.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/states.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/scenarios.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/states.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/test/java/com/tlglearning/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/test/resources/.keep" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GamePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GamePrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/InputHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/InputHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/JacksonParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/JacksonParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/LoadGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/LoadGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/PrettyText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/PrettyText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/SaveGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/SaveGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/ScenarioGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/ScenarioGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/TitleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/TitleScreen.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ElfP3xeZTfaOxN9I8DGuqhF3J1" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "C:/Users/ebenadda/TLG/PracticalApplications/CapstonePart3/22SDE05-Transporter-T2-Capstone",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="TransporterClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.java.com.tlglearning.client.TransporterClient" />
+      <module name="22SDE05-Transporter-T2-Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.java.com.tlglearning.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Capstonev2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Capstonev2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TransporterClient" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="" />
+      <created>1663175063436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663175063436</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
