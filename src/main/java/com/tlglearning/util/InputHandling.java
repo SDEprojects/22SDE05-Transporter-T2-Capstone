@@ -13,7 +13,6 @@ import java.util.Scanner;
 
 import static main.java.com.tlglearning.util.GameState.newGame;
 import static main.java.com.tlglearning.util.JacksonParser.parse;
-import static main.java.com.tlglearning.util.LoadGame.load;
 import static main.java.com.tlglearning.util.Menu.helpMenu;
 import static main.java.com.tlglearning.util.SaveGame.save;
 
@@ -43,20 +42,10 @@ public class InputHandling {
                 System.exit(0);
                 break;
             case "n":
-                System.out.println("Would you like to load your saved data? Type 'y' ");
-                BufferedReader loadIn = new BufferedReader(new InputStreamReader(System.in));
-                String loadInput = loadIn.readLine().toLowerCase();
-                if (loadInput.equals("y")) {
-                    prompt.runPromptCyan("newGameHelp");
-                    prompt.runPromptCyan("newGameCommands");
-                    load();
-                } else {
-                    clearScreen();
-                    prompt.runPromptCyan("newGame");
-                    prompt.runPromptCyan("newGameHelp");
-                    prompt.runPromptCyan("newGameCommands");
-                    newGame();
-                }
+                prompt.runPromptCyan("newGame");
+                prompt.runPromptCyan("newGameHelp");
+                prompt.runPromptCyan("newGameCommands");
+                newGame();
                 break;
             default:
                 prompt.runPromptRed("error");
