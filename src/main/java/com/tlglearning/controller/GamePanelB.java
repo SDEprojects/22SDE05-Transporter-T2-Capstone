@@ -1,6 +1,7 @@
 package com.tlglearning.controller;
 
 import com.tlglearning.model.Player;
+import com.tlglearning.model.TileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,16 +12,16 @@ public class GamePanelB extends JPanel implements Runnable {
     final int scale = 3;
 
     public final int tileSize = originalTileSize * scale;
-    final int maxScreenColumn = 16;
-    final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenColumn;
-    final int screenHeight = tileSize * maxScreenRow;
+    public final int maxScreenColumn = 16;
+    public final int maxScreenRow = 12;
+    public final int screenWidth = tileSize * maxScreenColumn;
+    public final int screenHeight = tileSize * maxScreenRow;
 
     int FPS = 60;
 
+    TileManager tm = new TileManager(this);
     KeyHandlerB keyH = new KeyHandlerB();
     Thread gameThread;
-
     Player player = new Player(this, keyH);
 
 
@@ -58,40 +59,6 @@ public class GamePanelB extends JPanel implements Runnable {
     }
 
 
-
-//        double drawInterval = 1000000000 / FPS;
-//        double nextDrawTime = System.nanoTime() + drawInterval;
-//
-//        while (true) {
-//            update();
-//            repaint();
-//
-//            try {
-//                double remainingTime = nextDrawTime - System.nanoTime();
-//                remainingTime = remainingTime / 1000000;
-//
-//                if (remainingTime < 0) {
-//                    remainingTime = 0;
-//                }
-//
-//                Thread.sleep((long) remainingTime);
-//
-//                nextDrawTime += drawInterval;
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        while (gameThread != null) {
-//
-//            long currentTime = System.nanoTime();
-//
-//            /* Update information such as character position, enemy position */
-//            update();
-//            /* Draw the game with the updated information*/
-//            repaint();
-//
-//        }
-
     public void update() {
         player.update();
     }
@@ -101,6 +68,8 @@ public class GamePanelB extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
+
+        tm.draw(g2);
         player.draw(g2);
 
 
