@@ -8,7 +8,7 @@ public class MainB {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(false);
-        window.setTitle("Transporter YOO");
+        window.setTitle("Transporter");
 
         GamePanelB gamePanel = new GamePanelB();
         window.add(gamePanel);

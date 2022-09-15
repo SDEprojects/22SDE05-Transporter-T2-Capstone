@@ -33,6 +33,7 @@ public class TileManager {
             tile[1].collision = true;
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/road.png"));
+            tile[2].collision = true;
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/water.png"));
@@ -81,7 +82,7 @@ public class TileManager {
 //        g2.drawImage(tile[0].image, 0, 0, gp.tileSize, gp.tileSize, null);
         while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
 
-            int tileNum = mapTileNum[worldRow][worldCol];
+            int tileNum = mapTileNum[worldCol][worldRow];
 
             int worldX = worldCol * gp.tileSize;
             int worldY = worldRow * gp.tileSize;

@@ -1,6 +1,7 @@
 package com.tlglearning.client;
 
-import com.tlglearning.util.*;
+import com.tlglearning.util.InputHandling;
+import com.tlglearning.util.TitleScreen;
 
 import java.io.IOException;
 

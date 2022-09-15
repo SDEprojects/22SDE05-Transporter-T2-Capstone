@@ -13,10 +13,10 @@ public class CollisionChecker {
     public void checkTile(EntityB entity) {
 
 
-        int entityLeftWorldX = entity.worldY + entity.solidArea.y;
-        int entityRightWorldX = entity.worldY + entity.solidArea.y + entity.solidArea.width;
-        int entityTopWorldY = entity.worldX + entity.solidArea.x;
-        int entityBottomWorldY = entity.worldX + entity.solidArea.x + entity.solidArea.height;
+        int entityLeftWorldX = entity.worldX - entity.solidArea.width / 2;
+        int entityRightWorldX = entity.worldX + entity.solidArea.width / 2;
+        int entityTopWorldY = entity.worldY - entity.solidArea.height / 2;
+        int entityBottomWorldY = entity.worldY + entity.solidArea.height / 2;
 
         int entityLeftCol = entityLeftWorldX / gp.tileSize;
         int entityRightCol = entityRightWorldX / gp.tileSize;
@@ -25,15 +25,15 @@ public class CollisionChecker {
 
         int tileNum1, tileNum2;
 
+        try {
         switch (entity.direction) {
             case "up":
                 entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
                 tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
                 tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                if (gp.tileM.tile[tileNum1].collision == true || gp.tileM.tile[tileNum2].collision == true) {
+                if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
                     entity.collisionOn = true;
                 }
-
                 break;
             case "down":
                 entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
@@ -59,6 +59,9 @@ public class CollisionChecker {
                     entity.collisionOn = true;
                 }
                 break;
+        }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
     }
 }
