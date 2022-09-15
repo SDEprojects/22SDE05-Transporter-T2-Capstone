@@ -47,6 +47,7 @@
   "snack aisle": "snack aisle",
   "drink aisle": "drink aisle",
   "attendant": "attendant",
+  "checkout counter": "checkout counter",
   "teddy bear": "teddy bear",
   "complaint box": "complaint box",
   "trash can": "trash can",
@@ -72,6 +73,5 @@
 
   "fill": "fill",
   "tank": "tank"
-
   }
 ]
