@@ -6,8 +6,10 @@
   "walk": "go",
   "dance": "go",
   "hop": "go",
+  "lap": "go",
 
   "drive": "drive",
+  "move": "drive",
 
   "get" : "get",
   "grab": "get",
