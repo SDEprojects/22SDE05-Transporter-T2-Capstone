@@ -1,12 +1,10 @@
 [{
   "go": "go",
-  "move": "go",
   "jump": "go",
   "run": "go",
   "walk": "go",
   "dance": "go",
   "hop": "go",
-  "lap": "go",
 
   "drive": "drive",
   "move": "drive",
@@ -14,6 +12,7 @@
   "get" : "get",
   "grab": "get",
   "lift": "get",
+  "pickup": "get",
   "retrieve": "get",
   "store": "get",
 
