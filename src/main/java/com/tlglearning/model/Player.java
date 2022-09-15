@@ -13,18 +13,28 @@ public class Player extends EntityB {
     GamePanelB gp;
     KeyHandlerB keyH;
 
+    public final int screenX;
+    public final int screenY;
+
     public Player(GamePanelB gp, KeyHandlerB keyH) {
         this.gp = gp;
         this.keyH = keyH;
+
+        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
+        screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
+
+        /* Used to set the player's collision radius, slightly smaller than a tile */
+        solidArea = new Rectangle(8, 16, 32, 32);
+
         setDefaultPosition();
         getPlayerImage();
     }
 
     /* Set Players default position */
     public void setDefaultPosition() {
-        x = 100;
-        y = 100;
-        speed = 4;
+        worldX = gp.tileSize*23;
+        worldY = gp.tileSize*21;
+        speed = 14;
         direction = "down";
     }
 
@@ -50,36 +60,53 @@ public class Player extends EntityB {
     public void update() {
 
         if(keyH.upPressed || keyH.downPressed || keyH.leftPressed || keyH.rightPressed){
+
+        if (keyH.upPressed) {
+            direction = "up";
+        }
+        else if (keyH.downPressed) {
+            direction = "down";
+        }
+        else if (keyH.leftPressed) {
+            direction = "left";
+        }
+        else if (keyH.rightPressed) {
+            direction = "right";
+        }
+        /* Check for collision */
+        collisionOn = false;
+        gp.cChecker.checkTile(this);
+
+        /* If collision is off, player can move */
+        if(!collisionOn){
+            switch (direction) {
+                case "up":
+                    worldY -= speed;
+                    break;
+                case "down":
+                    worldY += speed;
+                    break;
+                case "left":
+                    worldX -= speed;
+                    break;
+                case "right":
+                    worldX += speed;
+                    break;
+            }
+        }
             spriteCounter++;
-            if(spriteCounter > 10){
-                spriteCounter = 0;
-                if(spriteNum == 1){
+            if(spriteCounter > 12){
+                if(spriteNum==1){
                     spriteNum = 2;
                 }
-                else{
+                else if (spriteNum==2){
                     spriteNum = 1;
                 }
+                spriteCounter = 0;
             }
         }
         else{
             spriteNum = 1;
-        }
-
-        if (keyH.upPressed) {
-            direction = "up";
-            y -= speed;
-        }
-        if (keyH.downPressed) {
-            direction = "down";
-            y += speed;
-        }
-        if (keyH.leftPressed) {
-            direction = "left";
-            x -= speed;
-        }
-        if (keyH.rightPressed) {
-            direction = "right";
-            x += speed;
         }
 
     }
@@ -120,22 +147,22 @@ public class Player extends EntityB {
                 }
                 break;
         }
-        g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
+        g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
     }
 
     public void moveUp() {
-        y -= speed;
+        worldY -= speed;
     }
 
     public void moveDown() {
-        y += speed;
+        worldY += speed;
     }
 
     public void moveLeft() {
-        x -= speed;
+        worldX -= speed;
     }
 
     public void moveRight() {
-        x += speed;
+        worldX += speed;
     }
 }

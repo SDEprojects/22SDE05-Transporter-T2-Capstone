@@ -17,12 +17,18 @@ public class GamePanelB extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenColumn;
     public final int screenHeight = tileSize * maxScreenRow;
 
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
+    public final int worldWidth = tileSize * maxWorldCol;
+    public final int worldHeight = tileSize * maxWorldRow;
+
     int FPS = 60;
 
-    TileManager tm = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     KeyHandlerB keyH = new KeyHandlerB();
     Thread gameThread;
-    Player player = new Player(this, keyH);
+    public CollisionChecker cChecker = new CollisionChecker(this);
+    public Player player = new Player(this, keyH);
 
 
     public GamePanelB() {
@@ -69,7 +75,7 @@ public class GamePanelB extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        tm.draw(g2);
+        tileM.draw(g2);
         player.draw(g2);
 
 
