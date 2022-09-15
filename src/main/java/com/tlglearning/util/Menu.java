@@ -72,15 +72,15 @@ public class Menu {
     private static String availableCMD(Location location){
         if (inOffice.contains(location.getLocationName())) {
             return "********************Available Commands********************\n" +
-                    ">> move/go + <direction> will change your current location\n" +
+                    ">> walk/go/jump/run/hop/dance + <direction> will change your current location\n" +
                     ">> explore + <specific place> will inspect specific parts of a location\n" +
-                    ">> get/grab + <item name> will add the item to your backpack\n" +
+                    ">> get/grab/pickup + <item name> will add the item to your backpack\n" +
                     ">> start driving will allow you to start driving if you have met the required conditions\n" +
                     ">> Pressing 'q' at anytime will exit you from the game\n" +
                     "**********************************************************";
         }else {
             return "********************Available Commands********************\n" +
-                    ">> drive + <direction> will will change your current location\n" +
+                    ">> drive/move + <direction> will will change your current location\n" +
                     ">> deliver/pickup + load will pickup or delivery your load\n" +
                     ">> Pressing 'q' at anytime will exit you from the game\n" +
                     "**********************************************************";
