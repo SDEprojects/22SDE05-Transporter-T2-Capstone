@@ -10,6 +10,7 @@
     "newGameCommands": "To move from room to room try 'move/go + <direction>', to look closer at something  try 'explore/look + <obj name>'",
     "twoError": "we need more than one word.",
     "invalidLocation": "That location is invalid.",
+    "invalidLocation1": "You cannot go in this direction. Look for the doors in this room to exit.",
     "invalidExplore": "That location is not explorable.",
     "keyNeeded": "You need the key in the warehouse desk to open this",
     "invalidItem": "That item is invalid.",
