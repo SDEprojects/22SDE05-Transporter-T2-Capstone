@@ -15,18 +15,18 @@ public class Menu {
                     "'2' - to see items in your inventory.\n" +
                     "'3' - to see your current location, available exits, and a map of the office.\n" +
                     "'4' - to see items needed to get on the road.\n >>>");
-            int input = Integer.parseInt(read.next());
+            String input = String.valueOf(read.next());
             switch (input) {
-                case 1:
+                case "1":
                     System.out.println(availableCMD(location));
                     break;
-                case 2:
+                case "2":
                     System.out.println("\nYour backpack has the following items: \n" + showBackpack(inventory) + "\n");
                     break;
-                case 3:
+                case "3":
                     System.out.println(locationData(location));
                     break;
-                case 4:
+                case "4":
                     System.out.println(showScenarioDetails(scenario, location));
                     break;
                 default:
@@ -36,12 +36,12 @@ public class Menu {
             System.out.println("\nWhat do you need help with today?\n" +
                     "'1' - for a list of available commands.\n" +
                     "'2' - to see route plan.\n >>>");
-            int input = Integer.parseInt(read.next());
+            String input = String.valueOf(read.next());
             switch (input) {
-                case 1:
+                case "1":
                     System.out.println(availableCMD(location));
                     break;
-                case 2:
+                case "2":
                     System.out.println(showScenarioDetails(scenario, location));
                     break;
                 default:

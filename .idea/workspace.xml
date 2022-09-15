@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/exploreLocation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/exploreLocation.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gameprompt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
