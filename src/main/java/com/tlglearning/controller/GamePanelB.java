@@ -1,6 +1,7 @@
 package com.tlglearning.controller;
 
 import com.tlglearning.model.Player;
+import com.tlglearning.model.SuperObject;
 import com.tlglearning.model.TileManager;
 
 import javax.swing.*;
@@ -28,7 +29,9 @@ public class GamePanelB extends JPanel implements Runnable {
     KeyHandlerB keyH = new KeyHandlerB();
     Thread gameThread;
     public CollisionChecker cChecker = new CollisionChecker(this);
+    public AssetSetter aSetter = new AssetSetter(this);
     public Player player = new Player(this, keyH);
+    public SuperObject obj[] = new SuperObject[10];
 
 
     public GamePanelB() {
@@ -37,6 +40,11 @@ public class GamePanelB extends JPanel implements Runnable {
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
+    }
+
+    public void setUpGame() {
+
+        aSetter.setObject();
     }
 
     /* Start Game */
@@ -52,13 +60,11 @@ public class GamePanelB extends JPanel implements Runnable {
             repaint();
 
 
-
             try {
                 Thread.sleep(1000 / FPS);
 
 
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
@@ -75,7 +81,17 @@ public class GamePanelB extends JPanel implements Runnable {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        /* Draw the background */
         tileM.draw(g2);
+
+        /* Draw the objects */
+        for (SuperObject superObject : obj) {
+            if (superObject != null) {
+                superObject.draw(g2, this);
+            }
+        }
+
+        /* Draw the player */
         player.draw(g2);
 
 
