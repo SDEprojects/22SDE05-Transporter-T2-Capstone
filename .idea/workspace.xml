@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="22SDE05-Transporter-T2-Capstone:jar" />
+    </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/command.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/command.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/command.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +41,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebenadda/TLG/PracticalApplications/CapstonePart3/22SDE05-Transporter-T2-Capstone&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebenadda/TLG/PracticalApplications/CapstonePart3/22SDE05-Transporter-T2-Capstone/src/main/resources&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
@@ -89,7 +88,13 @@
       <created>1663269954823</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1663269954823</updated>
+      <updated>1663175063436</updated>
+      <workItem from="1663188224552" duration="603000" />
+      <workItem from="1663188967235" duration="7108000" />
+      <workItem from="1663246882721" duration="582000" />
+      <workItem from="1663247489110" duration="4275000" />
+      <workItem from="1663288046576" duration="1810000" />
+      <workItem from="1663342802568" duration="1711000" />
     </task>
     <servers />
   </component>
