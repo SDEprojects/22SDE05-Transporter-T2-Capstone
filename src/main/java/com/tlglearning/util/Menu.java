@@ -87,7 +87,7 @@ public class Menu {
         }
     }
     //shows the current inventory the player has acquired
-    private static String showBackpack(Inventory inventory){
+    protected static String showBackpack(Inventory inventory){
         List<String> backpack = inventory.getBackpack();
         return backpack.toString();
     }

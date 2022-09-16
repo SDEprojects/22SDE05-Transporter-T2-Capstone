@@ -37,7 +37,8 @@ public class GameState {
                 prompt.runPrompt("officeMap");
                 String map = currentLocation.getLocationName();
                 prompt.runPrompt(map);
-                System.out.println("Items Needed to start driving\n" + startingScenario.getItemsNeeded());
+                System.out.println("Items Needed to start driving:" + startingScenario.getItemsNeeded());
+                System.out.println("\nItems you have in your backback:" + PrettyText.GREEN.getColor() + Inventory.getBackpack() + PrettyText.RESET.getColor() + "\n");
             } else {
                 System.out.println("\nYour available directions of travel are:\nNorth= " + currentLocation.getNorth() +
                 "\nSouth= " + currentLocation.getSouth() +
@@ -55,7 +56,7 @@ public class GameState {
         } while (!"q".equals(userInput));
         prompt.runPromptCyan("quit");
     }
-    //takes the command input and runs the action method that correlates to the verb in the command input
+   //takes the command input and runs the action method that correlates to the verb in the command input
     public static void action(List<String> toPlayer, Location currentLocation, Inventory backpack, ScenarioGenerator scenario, Actions player) throws IOException {
         String verb = null;
         if (toPlayer.get(0) != null) {
