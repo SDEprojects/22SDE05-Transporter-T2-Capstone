@@ -1,4 +1,4 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -9,10 +9,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
-import static com.tlglearning.util.GameState.action;
-import static com.tlglearning.util.InputHandling.clearScreen;
-import static com.tlglearning.util.InputHandling.runCommand;
-import static com.tlglearning.util.Menu.inOffice;
+import static main.java.com.tlglearning.util.GameState.action;
+import static main.java.com.tlglearning.util.InputHandling.clearScreen;
+import static main.java.com.tlglearning.util.InputHandling.runCommand;
+import static main.java.com.tlglearning.util.Menu.inOffice;
 
 public class LoadGame {
     public static void load() throws IOException {

@@ -1,6 +1,6 @@
-package com.tlglearning.client;
+package main.java.com.tlglearning.client;
 
-import com.tlglearning.util.*;
+import main.java.com.tlglearning.util.*;
 
 import java.io.IOException;
 

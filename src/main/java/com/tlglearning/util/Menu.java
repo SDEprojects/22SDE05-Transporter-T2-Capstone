@@ -1,4 +1,4 @@
-package com.tlglearning.util;
+package main.java.com.tlglearning.util;
 
 import java.util.*;
 
@@ -15,18 +15,18 @@ public class Menu {
                     "'2' - to see items in your inventory.\n" +
                     "'3' - to see your current location, available exits, and a map of the office.\n" +
                     "'4' - to see items needed to get on the road.\n >>>");
-            int input = Integer.parseInt(read.next());
+            String input = String.valueOf(read.next());
             switch (input) {
-                case 1:
+                case "1":
                     System.out.println(availableCMD(location));
                     break;
-                case 2:
+                case "2":
                     System.out.println("\nYour backpack has the following items: \n" + showBackpack(inventory) + "\n");
                     break;
-                case 3:
+                case "3":
                     System.out.println(locationData(location));
                     break;
-                case 4:
+                case "4":
                     System.out.println(showScenarioDetails(scenario, location));
                     break;
                 default:
@@ -36,12 +36,12 @@ public class Menu {
             System.out.println("\nWhat do you need help with today?\n" +
                     "'1' - for a list of available commands.\n" +
                     "'2' - to see route plan.\n >>>");
-            int input = Integer.parseInt(read.next());
+            String input = String.valueOf(read.next());
             switch (input) {
-                case 1:
+                case "1":
                     System.out.println(availableCMD(location));
                     break;
-                case 2:
+                case "2":
                     System.out.println(showScenarioDetails(scenario, location));
                     break;
                 default:
@@ -72,15 +72,15 @@ public class Menu {
     private static String availableCMD(Location location){
         if (inOffice.contains(location.getLocationName())) {
             return "********************Available Commands********************\n" +
-                    ">> move/go + <direction> will change your current location\n" +
+                    ">> walk/go/jump/run/hop/dance + <direction> will change your current location\n" +
                     ">> explore + <specific place> will inspect specific parts of a location\n" +
-                    ">> get/grab + <item name> will add the item to your backpack\n" +
+                    ">> get/grab/pickup + <item name> will add the item to your backpack\n" +
                     ">> start driving will allow you to start driving if you have met the required conditions\n" +
                     ">> Pressing 'q' at anytime will exit you from the game\n" +
                     "**********************************************************";
         }else {
             return "********************Available Commands********************\n" +
-                    ">> drive + <direction> will will change your current location\n" +
+                    ">> drive/move + <direction> will will change your current location\n" +
                     ">> deliver/pickup + load will pickup or delivery your load\n" +
                     ">> Pressing 'q' at anytime will exit you from the game\n" +
                     "**********************************************************";
