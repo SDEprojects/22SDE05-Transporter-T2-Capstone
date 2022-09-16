@@ -1,5 +1,5 @@
 # Ignore idea directory
-.idea
+.idea/
 
 # Compiled class file
 *.class
