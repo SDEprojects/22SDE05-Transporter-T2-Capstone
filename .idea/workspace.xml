@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="">
+    <list default="true" id="cc094035-a4c3-4b41-ab09-a5e4423c7bc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core_databind.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core_databind.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/command.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/command.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/exploreLocation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/exploreLocation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/gameprompt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/exploreLocation.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/exploreLocation.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/gameprompt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gameprompt.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -26,33 +32,25 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2ElfP3xeZTfaOxN9I8DGuqhF3J1" />
+  <component name="ProjectId" id="2Eoljksf2Jf5Y6NQvR7kwMwwODI" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ebenadda/TLG/PracticalApplications/CapstonePart3/22SDE05-Transporter-T2-Capstone&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "true",
+    "Repository.Attach.JavaDocs": "true",
+    "Repository.Attach.Sources": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "corretto-11",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\ebenadda\TLG\PracticalApplications\CapstonePart3\22SDE05-Transporter-T2-Capstone\src\main\resources" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="TransporterClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.tlglearning.client.TransporterClient" />
@@ -89,20 +87,13 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7041bbde-485a-4abe-b006-a8e3f447583c" name="Changes" comment="" />
-      <created>1663175063436</created>
+      <changelist id="cc094035-a4c3-4b41-ab09-a5e4423c7bc0" name="Changes" comment="" />
+      <created>1663269954823</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1663175063436</updated>
-      <workItem from="1663188224552" duration="603000" />
-      <workItem from="1663188967235" duration="7108000" />
-      <workItem from="1663246882721" duration="582000" />
-      <workItem from="1663247489110" duration="4275000" />
+      <updated>1663269954823</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -114,5 +105,25 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/tlglearning/util/GamePrompt.java</url>
+          <line>39</line>
+          <properties class="main.java.com.tlglearning.util.GamePrompt" method="runPromptRed">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/22SDE05_Transporter_T2_Capstone$TransporterClient.ic" NAME="TransporterClient Coverage Results" MODIFIED="1663273939919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>main.java.com.tlglearning.client.*</FILTER>
+    </SUITE>
   </component>
 </project>

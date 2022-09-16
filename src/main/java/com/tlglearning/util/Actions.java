@@ -24,7 +24,7 @@ public class Actions {
     InputHandling gameStart = new InputHandling();
 
     public Actions(){
-    //ctor for Actions that reads in and parses JSON files into a JsonNode obj to be used by the other methods
+    //constructor for Actions that reads in and parses JSON files into a JsonNode obj to be used by the other methods
         try {
             InputStream locationJson = Actions.class.getClassLoader().getResourceAsStream("location.json");
             moveLocation = parse(locationJson);
