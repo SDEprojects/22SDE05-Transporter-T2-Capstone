@@ -34,6 +34,7 @@ public class GameState {
         in = new BufferedReader(new InputStreamReader(System.in));
         do {
             if (inOffice.contains(currentLocation.getLocationName())) {
+                prompt.runPrompt("officeMap");
                 String map = currentLocation.getLocationName();
                 prompt.runPrompt(map);
                 System.out.println("Items Needed to start driving\n" + startingScenario.getItemsNeeded());
