@@ -49,7 +49,9 @@ public class Actions {
             prompt.runPrompt("manager approach");
             prompt.runPrompt("manager conv");
 
-        } else {
+        }else if (newLocation.equals("leads to nowhere")){
+            prompt.runPromptRed("invalidLocation1");
+        }else {
             updateLocationDetails(currentLocation, newLocation, moveLocation);
             System.out.println(InputHandling.getDescription(newLocation, "description", moveLocation));
         }
