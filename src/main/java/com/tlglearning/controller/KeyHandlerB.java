@@ -6,6 +6,9 @@ import java.awt.event.KeyListener;
 public class KeyHandlerB implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
+    public boolean spacePressed, enterPressed, escPressed;
+
+    private GamePanelB gp;
 
 
     @Override
@@ -30,6 +33,9 @@ public class KeyHandlerB implements KeyListener {
         }
         if(code == KeyEvent.VK_RIGHT){
             rightPressed = true;
+        }
+        if(code == KeyEvent.VK_SPACE){
+            spacePressed = true;
         }
     }
 
