@@ -17,6 +17,7 @@ public class UI {
     public int messageCounter = 0;
     public boolean gameFinished = false;
     double playTime;
+    boolean messageFlag = true;
     DecimalFormat df = new DecimalFormat("#0.00");
 
 
@@ -29,8 +30,30 @@ public class UI {
     }
 
     public void showMessage(String text) {
-        message = text;
-        messageOn = true;
+//        message = text;
+//        messageOn = true;
+
+
+
+        Thread t = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                if (messageFlag){
+                    message = text;
+                    messageOn = true;
+                    messageFlag = false;
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    messageFlag = true;
+                }
+            }
+        });
+        t.start();
     }
 
     public void draw(Graphics2D g2) {
@@ -99,5 +122,12 @@ public class UI {
         }
 
 
+    }
+    public void sleep(int time) {
+        try {
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

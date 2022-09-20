@@ -36,7 +36,7 @@ public class GamePanelB extends JPanel implements Runnable {
     Thread gameThread;
 
     public Player player = new Player(this, keyH);
-    public SuperObject obj[] = new SuperObject[10];
+    public SuperObject obj[] = new SuperObject[25];
 
 
     public GamePanelB() {
@@ -121,13 +121,16 @@ public class GamePanelB extends JPanel implements Runnable {
 
     public void playSE(int i){
         Thread sound1 = new Thread(new Runnable() {
+
             @Override
             public void run() {
+
                 if (soundEffectFlag) {
+
                     soundEffectFlag = false;
                     sound.setFile(i);
                     sound.play();
-                    sleep(700);
+                    sleep(1300);
                     soundEffectFlag = true;
                 }
 

@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Player extends EntityB {
 
@@ -16,10 +17,14 @@ public class Player extends EntityB {
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
+    public int hasTruckKey = 0;
+
     boolean vendingFlag = true;
     boolean coffeeFlag = true;
     boolean deskFlag = true;
+    boolean npc1Flag = true;
 
+    HashMap<String,String> states = new HashMap<>();
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -42,20 +47,20 @@ public class Player extends EntityB {
     public void setDefaultPosition() {
         worldX = gp.tileSize * 5;
         worldY = gp.tileSize * 234;
-        speed = 4;
+        speed = 11;
         direction = "down";
     }
 
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up_1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up_2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down_1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down_2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left_1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left_2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right_1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right_2.png"));
+            up1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up1.png"));
+            up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
+            down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
+            down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down2.png"));
+            left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left1.png"));
+            left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
+            right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
+            right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
 //            down1 = ImageIO.read(new FileInputStream("src/main/resources/player1/player_down1.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -131,6 +136,14 @@ public class Player extends EntityB {
                     gp.obj[i] = null;
                     gp.ui.showMessage("You picked up a key!");
                     break;
+                case "TruckKey":
+                    gp.playSE(2);
+                    /* add key to inventory */
+                    hasTruckKey++;
+                    /* remove object from game */
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("You picked up the keys to the truck!");
+                    break;
                 case "Door":
                     if (hasKey > 0) {
                         gp.playSE(4);
@@ -140,6 +153,18 @@ public class Player extends EntityB {
                     } else {
                         gp.playSE(6);
                         gp.ui.showMessage("The door is locked! You knock but no one answers");
+
+                    }
+                    break;
+                case "Door1":
+                    if (hasTruckKey > 0) {
+                        gp.playSE(4);
+                        gp.obj[i] = null;
+                        hasTruckKey--;
+                        gp.ui.showMessage("You unlocked the door!");
+                    } else {
+                        gp.playSE(6);
+                        gp.ui.showMessage("You need the keys to the truck before you go!");
 
                     }
                     break;
@@ -172,7 +197,7 @@ public class Player extends EntityB {
                     }
                     break;
                 case "Vending":
-                    if (vendingFlag){
+                    if (vendingFlag) {
                         gp.playSE(3);
                         vendingFlag = false;
                         gp.ui.showMessage("You got the soda from the vending machine!");
@@ -182,12 +207,25 @@ public class Player extends EntityB {
                     }
                     break;
                 case "Coffee":
-                    if (coffeeFlag){
+                    if (coffeeFlag) {
                         gp.playSE(3);
                         coffeeFlag = false;
                         gp.ui.showMessage("You got your coffee! One step closer!");
                         speed -= 4;
                         break;
+                    }
+                    break;
+                case "NPC1":
+                    if (npc1Flag) {
+                        gp.playSE(3);
+                        npc1Flag = false;
+                        gp.ui.showMessage("HR Coordinator: Aren't you leaving soon? You might need this logbook.");
+                        speed -= 4;
+                        break;
+                    } else {
+                        gp.playSE(8);
+                        gp.ui.showMessage("HR Coordinator: Safe travels!");
+
                     }
                     break;
 

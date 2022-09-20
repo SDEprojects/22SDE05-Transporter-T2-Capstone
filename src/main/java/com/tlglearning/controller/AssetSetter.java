@@ -12,14 +12,14 @@ public class AssetSetter {
 
     public void setObject(){
         gp.obj[0] = new OBJ_Key();
-        gp.obj[0].worldX = 30 * gp.tileSize;
-        gp.obj[0].worldY = 240 * gp.tileSize;
+        gp.obj[0].worldX = 29 * gp.tileSize;
+        gp.obj[0].worldY = 248 * gp.tileSize;
 
         gp.obj[1] = new OBJ_Key();
         gp.obj[1].worldX = 20 * gp.tileSize;
         gp.obj[1].worldY = 20 * gp.tileSize;
 
-        gp.obj[2] = new OBJ_Door();
+        gp.obj[2] = new OBJ_Door1();
         gp.obj[2].worldX = 4 * gp.tileSize;
         gp.obj[2].worldY = 231 * gp.tileSize;
 
@@ -47,6 +47,15 @@ public class AssetSetter {
         gp.obj[9] = new OBJ_Coffee();
         gp.obj[9].worldX = 36 * gp.tileSize;
         gp.obj[9].worldY = 232 * gp.tileSize;
+
+        gp.obj[10] = new OBJ_NPC1();
+        gp.obj[10].worldX = 28 * gp.tileSize;
+        gp.obj[10].worldY = 245 * gp.tileSize;
+        gp.obj[10].collision = true;
+
+        gp.obj[11] = new OBJ_TruckKey();
+        gp.obj[11].worldX = 38 * gp.tileSize;
+        gp.obj[11].worldY = 228 * gp.tileSize;
     }
 
 }

@@ -13,7 +13,7 @@ public class Sound {
     public Sound(){
 
         /* songs */
-        soundURL[0] = getClass().getResource("/sounds/funtheme.wav");
+        soundURL[0] = getClass().getResource("/sounds/musictheme.wav");
         soundURL[1] = getClass().getResource("/sounds/werewolfsong.wav");
 
         /* success sounds */
@@ -21,8 +21,10 @@ public class Sound {
         soundURL[3] = getClass().getResource("/sounds/powerup.wav");
         soundURL[4] = getClass().getResource("/sounds/unlock.wav");
         soundURL[5] = getClass().getResource("/sounds/fanfare.wav");
+        soundURL[7] = getClass().getResource("/sounds/levelup.wav");
 
         soundURL[6] = getClass().getResource("/sounds/doorlocked.wav");
+        soundURL[8] = getClass().getResource("/sounds/cursor.wav");
     }
 
     public void setFile(int i){
@@ -30,14 +32,21 @@ public class Sound {
             AudioInputStream ais = AudioSystem.getAudioInputStream(soundURL[i]);
             clip = AudioSystem.getClip();
             clip.open(ais);
+
+
         }
         catch (Exception e){
         }
+
 
     }
 
     public void play(){
         clip.setFramePosition(0);
+        clip.start();
+//        FloatControl gainControl =
+//                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//        gainControl.setValue(-45.0f);
         clip.start();
 
     }
