@@ -22,8 +22,7 @@ public class Player extends EntityB {
     boolean coffeeFlag = true;
     boolean deskFlag = true;
     boolean npc1Flag = true;
-    boolean playerFlag = true;
-
+    boolean truckFlag;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -51,8 +50,9 @@ public class Player extends EntityB {
     }
 
     public void getPlayerImage() {
-        try {
-            if (playerFlag) {
+
+        if (!truckFlag) {
+            try {
                 up1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up1.png"));
                 up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
                 down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
@@ -61,25 +61,27 @@ public class Player extends EntityB {
                 left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
                 right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
                 right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-           if (!playerFlag) {
-                up1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up.png"));
-                up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
-                down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
-                down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down2.png"));
-                left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left1.png"));
-                left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
-                right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
-                right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
-
-            }
-//            down1 = ImageIO.read(new FileInputStream("src/main/resources/player1/player_down1.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
-
+        if (truckFlag) {
+            try {
+                up1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up1.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_down.png"));
+                down2 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_down1.png"));
+                left1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_left.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_left1.png"));
+                right1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_right.png"));
+                right2 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_right1.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 
     public void update() {
 
@@ -170,20 +172,32 @@ public class Player extends EntityB {
                     break;
                 case "Door1":
                     if (hasTruckKey > 0) {
-                        playerFlag = false;
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasTruckKey--;
                         gp.ui.showMessage("You unlocked the door!");
-                        worldX = gp.tileSize * 5;
-                        worldY = gp.tileSize * 224;
-                        speed = 16;
-                        direction = "up";
                     } else {
                         gp.playSE(6);
                         gp.ui.showMessage("You need the keys to the truck before you go!");
 
                     }
+                    break;
+                case "Truck":
+                    if (true) {
+                        truckFlag = true;
+                        getPlayerImage();
+                        gp.playSE(4);
+                        gp.obj[i] = null;
+                        hasTruckKey--;
+                        gp.ui.showMessage("You crank up the truck! Lets roll!");
+                        speed = 26;
+                        direction = "up";
+                    }
+//                    else {
+//                        gp.playSE(6);
+//                        gp.ui.showMessage("You need the keys to the truck before you go!");
+//
+//                    }
                     break;
                 case "Thermos":
                     gp.playSE(3);
@@ -232,6 +246,7 @@ public class Player extends EntityB {
                         break;
                     }
                     break;
+                    /* HR rep female sprite in HR office */
                 case "NPC1":
                     if (npc1Flag) {
                         gp.playSE(3);

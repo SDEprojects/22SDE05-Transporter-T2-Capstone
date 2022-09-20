@@ -19,9 +19,9 @@ public class AssetSetter {
         gp.obj[1].worldX = 20 * gp.tileSize;
         gp.obj[1].worldY = 20 * gp.tileSize;
 
-        gp.obj[2] = new OBJ_Door1();
-        gp.obj[2].worldX = 4 * gp.tileSize;
-        gp.obj[2].worldY = 231 * gp.tileSize;
+//        gp.obj[2] = new OBJ_Door1();
+//        gp.obj[2].worldX = 4 * gp.tileSize;
+//        gp.obj[2].worldY = 231 * gp.tileSize;
 
         gp.obj[3] = new OBJ_Door();
         gp.obj[3].worldX = 34 * gp.tileSize;
@@ -56,6 +56,15 @@ public class AssetSetter {
         gp.obj[11] = new OBJ_TruckKey();
         gp.obj[11].worldX = 38 * gp.tileSize;
         gp.obj[11].worldY = 228 * gp.tileSize;
+
+        gp.obj[12] = new OBJ_Truck();
+        gp.obj[12].worldX = 4 * gp.tileSize;
+        gp.obj[12].worldY = 228 * gp.tileSize;
+
+        gp.obj[13] = new OBJ_Package();
+        gp.obj[13].worldX = 6 * gp.tileSize;
+        gp.obj[13].worldY = 220 * gp.tileSize;
+
     }
 
 }

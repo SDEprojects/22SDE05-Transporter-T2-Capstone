@@ -28,35 +28,59 @@ public class CollisionChecker {
         try {
             switch (entity.direction) {
                 case "up":
-                    entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
-                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                        entity.collisionOn = true;
+                    try {
+                        entityTopRow = (entityTopWorldY - entity.speed) / gp.tileSize;
+                        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+                        if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                            entity.collisionOn = true;
+                        }
+                    }
+                    catch (NullPointerException ignore){
+                        System.out.println("Yep something broken");
+                        break;
                     }
                     break;
                 case "down":
-                    entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
-                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                        entity.collisionOn = true;
+                    try {
+                        entityBottomRow = (entityBottomWorldY + entity.speed) / gp.tileSize;
+                        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+                        if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                            entity.collisionOn = true;
+                        }
+                    }
+                    catch (NullPointerException ignore){
+                        System.out.println("Yep something broken");
+                        break;
                     }
                     break;
                 case "left":
-                    entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
-                    tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
-                    tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
-                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                        entity.collisionOn = true;
+                    try {
+                        entityLeftCol = (entityLeftWorldX - entity.speed) / gp.tileSize;
+                        tileNum1 = gp.tileM.mapTileNum[entityLeftCol][entityTopRow];
+                        tileNum2 = gp.tileM.mapTileNum[entityLeftCol][entityBottomRow];
+                        if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                            entity.collisionOn = true;
+                        }
+                    }
+                    catch (NullPointerException ignore){
+                        System.out.println("Yep something broken");
+                        break;
                     }
                     break;
                 case "right":
-                    entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
-                    tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
-                    tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
-                    if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
-                        entity.collisionOn = true;
+                    try {
+                        entityRightCol = (entityRightWorldX + entity.speed) / gp.tileSize;
+                        tileNum1 = gp.tileM.mapTileNum[entityRightCol][entityTopRow];
+                        tileNum2 = gp.tileM.mapTileNum[entityRightCol][entityBottomRow];
+                        if (gp.tileM.tile[tileNum1].collision || gp.tileM.tile[tileNum2].collision) {
+                            entity.collisionOn = true;
+                        }
+                    }
+                    catch (NullPointerException ignore){
+                        System.out.println("Yep something broken");
+                        break;
                     }
                     break;
             }

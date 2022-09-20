@@ -16,7 +16,7 @@ public class TileManager {
 
     public TileManager(GamePanelB gp) {
         this.gp = gp;
-        tile = new Tile[40];
+        tile = new Tile[50];
         getTileImage();
         mapTileNum = new int[gp.maxWorldCol][gp.maxWorldRow];
         loadMap("/maps1/worldmap.txt");
@@ -139,6 +139,18 @@ public class TileManager {
             tile[31] = new Tile();
             tile[31].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/dooropen1.png"));
 
+            /* illinois and indiana, some of KY */
+            tile[32] = new Tile();
+            tile[32].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/yellowgrass.png"));
+
+            tile[33] = new Tile();
+            tile[33].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/corn.png"));
+
+            tile[34] = new Tile();
+            tile[34].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/yelgreen_grass.png"));
+
+            tile[35] = new Tile();
+            tile[35].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/dark_grass.png"));
 
 
 
@@ -192,12 +204,16 @@ public class TileManager {
             int worldY = worldRow * gp.tileSize;
             int screenX = worldX - gp.player.worldX + gp.player.screenX;
             int screenY = worldY - gp.player.worldY + gp.player.screenY;
+            try {
+                if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+                        worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+                        worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+                        worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
+                    g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
-            if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                    worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                    worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                    worldY - gp.tileSize < gp.player.worldY + gp.player.screenY) {
-                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                }
+            } catch (Exception ignore) {
+                break;
             }
 
 //            g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);

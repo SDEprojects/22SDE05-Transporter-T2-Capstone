@@ -44,7 +44,7 @@ public class UI {
                     messageOn = true;
                     messageFlag = false;
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(1300);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -101,23 +101,28 @@ public class UI {
             g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize - 20, gp.tileSize - 20, null);
             g2.drawString("= " + gp.player.hasKey, 50, 50);
             g2.drawString("Destination: " + "South Carolina", 95, 50);
+//            g2.setColor(Color.WHITE);
+//            g2.fillRect(0, gp.tileSize*11, gp.screenWidth, gp.screenHeight / 4);
+            ;
             playTime +=(double)1/60;
 //            g2.drawString("Time: " + df.format(playTime), gp.tileSize*13, 50);
 
 
             if (messageOn) {
-//            g2.setColor(Color.BLACK);
-//            g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);;
+
+
                 g2.setColor(Color.WHITE);
-                g2.setFont(g2.getFont().deriveFont(25f));
+                g2.setFont(g2.getFont().deriveFont(15f));
                 g2.drawString(message, gp.tileSize / 2, gp.tileSize * 11);
 
                 messageCounter++;
-                if (messageCounter > 120) {
+                if (messageCounter > 150) {
                     messageCounter = 0;
                     messageOn = false;
                 }
+
             }
+
 
         }
 
