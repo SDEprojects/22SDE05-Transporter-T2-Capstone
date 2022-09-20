@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class Player extends EntityB {
 
@@ -23,8 +22,8 @@ public class Player extends EntityB {
     boolean coffeeFlag = true;
     boolean deskFlag = true;
     boolean npc1Flag = true;
+    boolean playerFlag = true;
 
-    HashMap<String,String> states = new HashMap<>();
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -53,14 +52,27 @@ public class Player extends EntityB {
 
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left1.png"));
-            left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
+            if (playerFlag) {
+                up1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up1.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
+                down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down2.png"));
+                left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left1.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
+                right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
+                right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
+            }
+           if (!playerFlag) {
+                up1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up.png"));
+                up2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_up2.png"));
+                down1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down.png"));
+                down2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_down2.png"));
+                left1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left1.png"));
+                left2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_left2.png"));
+                right1 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right1.png"));
+                right2 = ImageIO.read(getClass().getResourceAsStream("/player1/player_right2.png"));
+
+            }
 //            down1 = ImageIO.read(new FileInputStream("src/main/resources/player1/player_down1.png"));
         } catch (IOException e) {
             e.printStackTrace();
@@ -158,10 +170,15 @@ public class Player extends EntityB {
                     break;
                 case "Door1":
                     if (hasTruckKey > 0) {
+                        playerFlag = false;
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasTruckKey--;
                         gp.ui.showMessage("You unlocked the door!");
+                        worldX = gp.tileSize * 5;
+                        worldY = gp.tileSize * 224;
+                        speed = 16;
+                        direction = "up";
                     } else {
                         gp.playSE(6);
                         gp.ui.showMessage("You need the keys to the truck before you go!");
