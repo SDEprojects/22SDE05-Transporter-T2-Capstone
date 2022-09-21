@@ -1,6 +1,7 @@
-package main.java.com.tlglearning.client;
+package com.tlglearning.client;/*
+package com.tlglearning.client;
 
-import main.java.com.tlglearning.util.*;
+import com.tlglearning.util.*;
 
 import java.io.IOException;
 
@@ -17,3 +18,5 @@ public class TransporterClient {
         gameStart.gameStart();
     }
 }
+
+*/

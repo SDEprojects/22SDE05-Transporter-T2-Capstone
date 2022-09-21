@@ -1,4 +1,4 @@
-package main.java.com.tlglearning.util;
+package com.tlglearning.util;
 
 enum PrettyText {
 CYAN ("\u001B[36m"), RED("\u001B[31m"), RESET("\u001B[0m"), WHITE("\u001B[37m");

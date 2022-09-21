@@ -1,4 +1,4 @@
-package main.java.com.tlglearning.util;
+package com.tlglearning.util;
 
 import java.util.ArrayList;
 import java.util.List;

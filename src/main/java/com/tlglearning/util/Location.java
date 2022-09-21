@@ -1,4 +1,4 @@
-package main.java.com.tlglearning.util;
+package com.tlglearning.util;
 
 public class Location {
     //default starting location = truck for new game start

@@ -1,24 +1,21 @@
-package main.java.com.tlglearning.util;
+package com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tlglearning.communication.CommunicationManager;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.io.*;
+import java.util.*;
 
-import static main.java.com.tlglearning.util.InputHandling.*;
-import static main.java.com.tlglearning.util.JacksonParser.parse;
-import static main.java.com.tlglearning.util.Menu.inOffice;
+import static com.tlglearning.util.InputHandling.*;
+import static com.tlglearning.util.JacksonParser.parse;
+import static com.tlglearning.util.Menu.inOffice;
 
 public class GameState {
     private static GamePrompt prompt = new GamePrompt();
+    private static CommunicationManager coms = CommunicationManager.getInstance();
     //CTOR
     public GameState(){
+
     }
     //method to start a new game and initialize all necessary components
     public static void newGame() throws IOException {
@@ -32,11 +29,13 @@ public class GameState {
         List<String> toPlayer;
         //get users input and go through run command
         in = new BufferedReader(new InputStreamReader(System.in));
+
         do {
             if (inOffice.contains(currentLocation.getLocationName())) {
                 String map = currentLocation.getLocationName();
                 prompt.runPrompt(map);
                 System.out.println("Items Needed to start driving\n" + startingScenario.getItemsNeeded());
+                coms.communicateToApp("Items Needed to start driving\n" + startingScenario.getItemsNeeded());
             } else {
                 System.out.println("\nYour available directions of travel are:\nNorth= " + currentLocation.getNorth() +
                 "\nSouth= " + currentLocation.getSouth() +
@@ -45,7 +44,8 @@ public class GameState {
                 player.currentToDestination(currentLocation, startingScenario);
             }
             prompt.runPromptCyan("enterCommand");
-            userInput = in.readLine();
+            //userInput = in.readLine();
+            userInput = coms.getCommand();
             clearScreen();
             toPlayer = runCommand(userInput, currentLocation, backpack, startingScenario);
             if (!toPlayer.isEmpty()) {
@@ -119,6 +119,7 @@ public class GameState {
             } else {
                 prompt.runPromptRed("drivingItemsNeed");
                 System.out.println(needed);
+                coms.communicateToApp(needed.toString());
                 needed.clear();
             }
         }else {
