@@ -9,7 +9,7 @@ public class OBJ_Key extends SuperObject {
         name = "Key";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/objects/key2.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/key1.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

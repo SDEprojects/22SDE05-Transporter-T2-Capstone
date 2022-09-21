@@ -96,13 +96,21 @@ public class UI {
             gp.gameThread.stop();
 
         } else {
-            g2.setColor(Color.WHITE);
-            g2.setFont(arial_20);
-            g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize - 20, gp.tileSize - 20, null);
-            g2.drawString("= " + gp.player.hasKey, 50, 50);
-            g2.drawString("Destination: " + "South Carolina", 95, 50);
+            /* static display, inventory, destination, potentially state */
+//            g2.setColor(Color.WHITE);
+//            g2.setFont(arial_20);
+//            g2.drawImage(keyImage, gp.tileSize / 2, gp.tileSize / 2, gp.tileSize - 20, gp.tileSize - 20, null);
+//            g2.drawString("= " + gp.player.hasKey, 50, 50);
+//            g2.drawString("Destination: " + "South Carolina", 95, 50);
 //            g2.setColor(Color.WHITE);
 //            g2.fillRect(0, gp.tileSize*11, gp.screenWidth, gp.screenHeight / 4);
+            g2.setColor(Color.GRAY);
+            g2.fillRect(0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3);
+            g2.setFont(arial_20);
+            g2.setColor(Color.WHITE);
+            g2.drawImage(keyImage, 0, gp.tileSize*11, gp.tileSize - 20, gp.tileSize - 20, null);
+            g2.drawString("= " + gp.player.hasKey, 35, gp.tileSize*11+20);
+            g2.drawString("Destination: " + "South Carolina", 95, gp.tileSize*11+20);
             ;
             playTime +=(double)1/60;
 //            g2.drawString("Time: " + df.format(playTime), gp.tileSize*13, 50);
@@ -112,11 +120,11 @@ public class UI {
 
 
                 g2.setColor(Color.WHITE);
-                g2.setFont(g2.getFont().deriveFont(25f));
-                g2.drawString(message, gp.tileSize / 2, gp.tileSize * 11);
+                g2.setFont(g2.getFont().deriveFont(15f));
+                g2.drawString(message, gp.tileSize / 2, gp.tileSize * 11 - 20);
 
                 messageCounter++;
-                if (messageCounter > 150) {
+                if (messageCounter > 180) {
                     messageCounter = 0;
                     messageOn = false;
                 }

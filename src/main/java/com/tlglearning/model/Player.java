@@ -132,10 +132,10 @@ public class Player extends EntityB {
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
             if (entity.onRoadOn && truckFlag){
-                speed = 27;
+                speed = 47;
             }
             else if (!entity.onRoadOn){
-                speed = 11;
+                speed = 41;
             }
 
             /* Check Obj Collision */
