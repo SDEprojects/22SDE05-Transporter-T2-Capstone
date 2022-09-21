@@ -10,8 +10,7 @@ public class OBJ_Package extends SuperObject {
     private State state;
     public OBJ_Package(State state) {
 
-    public String state;
-    public OBJ_Package(String state) {
+
 
 
         name = "Package";

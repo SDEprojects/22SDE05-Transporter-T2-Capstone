@@ -71,7 +71,7 @@ public class Player extends EntityB {
     /* Set Players default position */
     public void setDefaultPosition() {
         worldX = gp.tileSize * 5;
-        worldY = gp.tileSize * 234;
+        worldY = gp.tileSize * 184;
         speed = 11;
         direction = "down";
     }
