@@ -166,7 +166,6 @@ public class TileManager {
             tile[40].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/parking.png"));
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
 
