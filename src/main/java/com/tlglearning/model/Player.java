@@ -33,6 +33,9 @@ public class Player extends EntityB {
 
     private State currentDestination;
 
+    Tile tile = new Tile();
+    EntityB entity = new EntityB();
+
 
 
 
@@ -45,7 +48,7 @@ public class Player extends EntityB {
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         /* Used to set the player's collision radius, slightly smaller than a tile */
-        solidArea = new Rectangle(4, 8, 2, 6);
+        solidArea = new Rectangle(8, 16, 16, 16);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
@@ -126,6 +129,14 @@ public class Player extends EntityB {
             /* Check for collision */
             collisionOn = false;
             gp.cChecker.checkTile(this);
+            entity.onRoadOn = false;
+            gp.cChecker.checkRoad(this);
+            if (entity.onRoadOn && truckFlag){
+                speed = 27;
+            }
+            else if (!entity.onRoadOn){
+                speed = 11;
+            }
 
             /* Check Obj Collision */
 
@@ -161,6 +172,7 @@ public class Player extends EntityB {
         } else {
             spriteNum = 1;
         }
+
 
     }
 
@@ -217,7 +229,7 @@ public class Player extends EntityB {
                         gp.obj[i] = null;
                         hasTruckKey--;
                         gp.ui.showMessage("You crank up the truck! Lets roll!");
-                        speed = 46;
+//                        speed = 46;
                         direction = "up";
                     }
 //                    else {
