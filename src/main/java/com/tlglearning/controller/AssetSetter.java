@@ -1,5 +1,6 @@
 package com.tlglearning.controller;
 
+import com.tlglearning.model.State;
 import com.tlglearning.model.objects.*;
 
 public class AssetSetter {
@@ -61,9 +62,28 @@ public class AssetSetter {
         gp.obj[12].worldX = 4 * gp.tileSize;
         gp.obj[12].worldY = 228 * gp.tileSize;
 
-        gp.obj[13] = new OBJ_Package();
-        gp.obj[13].worldX = 6 * gp.tileSize;
-        gp.obj[13].worldY = 220 * gp.tileSize;
+
+        gp.obj[13] = new OBJ_Package(State.IL);
+        gp.obj[13].worldX = 5 * gp.tileSize;
+        gp.obj[13].worldY = 210 * gp.tileSize;
+
+        gp.obj[14] = new OBJ_Package(State.TN);
+        gp.obj[14].worldX = 5 * gp.tileSize;
+        gp.obj[14].worldY = 212 * gp.tileSize;
+
+        gp.obj[15] = new OBJ_Package(State.KY);
+        gp.obj[15].worldX = 5 * gp.tileSize;
+        gp.obj[15].worldY = 214 * gp.tileSize;
+
+        gp.obj[16] = new OBJ_Package(State.OH);
+        gp.obj[16].worldX = 5 * gp.tileSize;
+        gp.obj[16].worldY = 216 * gp.tileSize;
+
+        gp.obj[17] = new OBJ_Package(State.SC);
+        gp.obj[17].worldX = 5 * gp.tileSize;
+        gp.obj[17].worldY = 218 * gp.tileSize;
+
+
 
     }
 

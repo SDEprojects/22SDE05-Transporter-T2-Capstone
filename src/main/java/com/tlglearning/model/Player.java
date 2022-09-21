@@ -2,11 +2,16 @@ package com.tlglearning.model;
 
 import com.tlglearning.controller.GamePanelB;
 import com.tlglearning.controller.KeyHandlerB;
+import com.tlglearning.model.objects.OBJ_Package;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
 
 public class Player extends EntityB {
 
@@ -24,6 +29,10 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     boolean truckFlag;
 
+    private Set<State> destinations;
+
+    private State currentDestination;
+
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
         this.gp = gp;
@@ -39,7 +48,22 @@ public class Player extends EntityB {
 
         setDefaultPosition();
         getPlayerImage();
+
+        setDestinations();
+        currentDestination = getNextDestination();
     }
+
+    public void setDestinations(){
+        destinations = new HashSet<>();
+        destinations.add(State.IL);
+        destinations.add(State.KY);
+        destinations.add(State.OH);
+        destinations.add(State.SC);
+        destinations.add(State.TN);
+
+
+    }
+
 
     /* Set Players default position */
     public void setDefaultPosition() {
@@ -261,6 +285,36 @@ public class Player extends EntityB {
                     }
                     break;
 
+                case "Package":
+                    if (currentDestination == null){
+                        gp.ui.showMessage("You deliver results!");
+                        break;
+                    }
+
+                    State currentState = ((OBJ_Package)gp.obj[i]).getState();
+                    if (currentDestination.getName().equals(currentState.getName())) {
+                        gp.playSE(3);
+                        npc1Flag = false;
+                        gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
+                        removeDestination(currentState);
+                        currentDestination = getNextDestination();
+                        if(currentDestination == null){
+                            gp.ui.showMessage("You picked up everything");
+                        }
+
+                        gp.ui.showMessage("you got these left as your destinations: " + destinations);
+                        speed -= 4;
+                        break;
+                    } else {
+                        gp.playSE(8);
+                        //gp.ui.showMessage("HR Coordinator: Safe travels!");
+                        gp.ui.showMessage("You are current in " + currentState.getName() + ".  You supposed to pick up " + currentDestination.getName() + "you got these left as your destinations: " + destinations);
+
+                    }
+                    break;
+
+
+
             }
         }
 
@@ -325,4 +379,33 @@ public class Player extends EntityB {
             e.printStackTrace();
         }
     }
+
+    public State getNextDestination(){
+        if (destinations.isEmpty()){
+            return null;
+        }
+
+        Random random = new Random();
+        int removeIndex = random.nextInt(destinations.size());
+        int currentIndex = 0;
+
+        Iterator<State> iter = destinations.iterator();
+        while (iter.hasNext()){
+            State res = iter.next();
+
+            if (currentIndex++ == removeIndex){
+                return res;
+            }
+
+        }
+
+
+        return null;
+    }
+
+    public boolean removeDestination(State state){
+        return destinations.remove(state);
+    }
+
+
 }
