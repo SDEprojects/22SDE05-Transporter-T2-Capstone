@@ -135,7 +135,7 @@ public class Player extends EntityB {
                 speed = 47;
             }
             else if (!entity.onRoadOn){
-                speed = 41;
+                speed = 17;
             }
 
             /* Check Obj Collision */
