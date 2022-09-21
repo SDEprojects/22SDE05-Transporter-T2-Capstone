@@ -112,7 +112,7 @@ public class UI {
 
 
                 g2.setColor(Color.WHITE);
-                g2.setFont(g2.getFont().deriveFont(15f));
+                g2.setFont(g2.getFont().deriveFont(25f));
                 g2.drawString(message, gp.tileSize / 2, gp.tileSize * 11);
 
                 messageCounter++;

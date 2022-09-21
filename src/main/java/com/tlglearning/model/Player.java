@@ -34,6 +34,9 @@ public class Player extends EntityB {
     private State currentDestination;
 
 
+
+
+
     public Player(GamePanelB gp, KeyHandlerB keyH) {
         this.gp = gp;
         this.keyH = keyH;
@@ -214,7 +217,7 @@ public class Player extends EntityB {
                         gp.obj[i] = null;
                         hasTruckKey--;
                         gp.ui.showMessage("You crank up the truck! Lets roll!");
-                        speed = 26;
+                        speed = 46;
                         direction = "up";
                     }
 //                    else {
@@ -258,7 +261,6 @@ public class Player extends EntityB {
                         gp.ui.showMessage("You got the soda from the vending machine!");
                         speed -= 3;
                         break;
-
                     }
                     break;
                 case "Coffee":
@@ -284,6 +286,7 @@ public class Player extends EntityB {
 
                     }
                     break;
+
 
                 case "Package":
                     if (currentDestination == null){
@@ -312,7 +315,6 @@ public class Player extends EntityB {
 
                     }
                     break;
-
 
 
             }

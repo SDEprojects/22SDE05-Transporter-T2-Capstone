@@ -6,8 +6,14 @@ import com.tlglearning.model.SuperObject;
 import javax.imageio.ImageIO;
 
 public class OBJ_Package extends SuperObject {
+
     private State state;
     public OBJ_Package(State state) {
+
+    public String state;
+    public OBJ_Package(String state) {
+
+
         name = "Package";
         this.state = state;
 
