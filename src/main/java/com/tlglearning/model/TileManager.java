@@ -154,9 +154,11 @@ public class TileManager {
 
             tile[38] = new Tile();
             tile[38].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/road_northsouth.png"));
+            tile[38].onRoad = true;
 
             tile[39] = new Tile();
             tile[39].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/road_eastwest.png"));
+            tile[39].onRoad = true;
 
             tile[40] = new Tile();
             tile[40].image = ImageIO.read(getClass().getResourceAsStream("/tiles1/parking.png"));
