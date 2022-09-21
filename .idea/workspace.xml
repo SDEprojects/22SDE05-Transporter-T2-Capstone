@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_9_14_2022_1_07_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/gameprompt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/22SDE05-Transporter-T2-Capstone/main/resources/gameprompt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gameprompt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gameprompt.json" afterDir="false" />
-    </list>
+    <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
