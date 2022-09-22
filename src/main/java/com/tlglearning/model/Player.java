@@ -36,8 +36,7 @@ public class Player extends EntityB {
     Tile tile = new Tile();
     EntityB entity = new EntityB();
 
-
-
+    public static int packageCounter = 0;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -59,7 +58,7 @@ public class Player extends EntityB {
         currentDestination = getNextDestination();
     }
 
-    public void setDestinations(){
+    public void setDestinations() {
         destinations = new HashSet<>();
         destinations.add(State.IL);
         destinations.add(State.KY);
@@ -132,10 +131,9 @@ public class Player extends EntityB {
             gp.cChecker.checkTile(this);
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
-            if (entity.onRoadOn && truckFlag){
+            if (entity.onRoadOn && truckFlag) {
                 speed = 47;
-            }
-            else if (!entity.onRoadOn){
+            } else if (!entity.onRoadOn) {
                 speed = 17;
             }
 
@@ -285,7 +283,7 @@ public class Player extends EntityB {
                         break;
                     }
                     break;
-                    /* HR rep female sprite in HR office */
+                /* HR rep female sprite in HR office */
                 case "NPC1":
                     if (npc1Flag) {
                         gp.playSE(3);
@@ -302,18 +300,19 @@ public class Player extends EntityB {
 
 
                 case "Package":
-                    if (currentDestination == null){
+                    if (currentDestination == null) {
+                        packageCounter += 1;
                         gp.ui.showMessage("You deliver results!");
                         break;
                     }
 
-                    State currentState = ((OBJ_Package)gp.obj[i]).getState();
+                    State currentState = ((OBJ_Package) gp.obj[i]).getState();
                     if (currentDestination.getName().equals(currentState.getName())) {
                         gp.playSE(3);
                         gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
                         removeDestination(currentState);
                         currentDestination = getNextDestination();
-                        if(currentDestination == null){
+                        if (currentDestination == null) {
                             gp.ui.showMessage("You picked up everything");
                         }
 
@@ -394,8 +393,8 @@ public class Player extends EntityB {
         }
     }
 
-    public State getNextDestination(){
-        if (destinations.isEmpty()){
+    public State getNextDestination() {
+        if (destinations.isEmpty()) {
             return null;
         }
 
@@ -404,10 +403,10 @@ public class Player extends EntityB {
         int currentIndex = 0;
 
         Iterator<State> iter = destinations.iterator();
-        while (iter.hasNext()){
+        while (iter.hasNext()) {
             State res = iter.next();
 
-            if (currentIndex++ == removeIndex){
+            if (currentIndex++ == removeIndex) {
                 return res;
             }
 
@@ -417,7 +416,7 @@ public class Player extends EntityB {
         return null;
     }
 
-    public boolean removeDestination(State state){
+    public boolean removeDestination(State state) {
         return destinations.remove(state);
     }
 
