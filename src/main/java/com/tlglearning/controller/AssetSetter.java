@@ -65,24 +65,28 @@ public class AssetSetter {
 
 
         gp.obj[13] = new OBJ_Package(State.IL);
-        gp.obj[13].worldX = 5 * gp.tileSize;
-        gp.obj[13].worldY = 160 * gp.tileSize;
+        gp.obj[13].worldX = 8 * gp.tileSize;
+        gp.obj[13].worldY = 140 * gp.tileSize;
 
         gp.obj[14] = new OBJ_Package(State.TN);
         gp.obj[14].worldX = 5 * gp.tileSize;
         gp.obj[14].worldY = 162 * gp.tileSize;
 
         gp.obj[15] = new OBJ_Package(State.KY);
-        gp.obj[15].worldX = 5 * gp.tileSize;
-        gp.obj[15].worldY = 164 * gp.tileSize;
+        gp.obj[15].worldX = 7 * gp.tileSize;
+        gp.obj[15].worldY = 154 * gp.tileSize;
 
         gp.obj[16] = new OBJ_Package(State.OH);
-        gp.obj[16].worldX = 5 * gp.tileSize;
-        gp.obj[16].worldY = 166 * gp.tileSize;
+        gp.obj[16].worldX = 7 * gp.tileSize;
+        gp.obj[16].worldY = 146 * gp.tileSize;
 
         gp.obj[17] = new OBJ_Package(State.SC);
-        gp.obj[17].worldX = 5 * gp.tileSize;
+        gp.obj[17].worldX = 2 * gp.tileSize;
         gp.obj[17].worldY = 168 * gp.tileSize;
+
+        gp.obj[18] = new OBJ_Package(State.MS);
+        gp.obj[18].worldX = 10 * gp.tileSize;
+        gp.obj[18].worldY = 169 * gp.tileSize;
 
     }
 

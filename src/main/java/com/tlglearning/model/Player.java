@@ -66,6 +66,7 @@ public class Player extends EntityB {
         destinations.add(State.OH);
         destinations.add(State.SC);
         destinations.add(State.TN);
+        destinations.add(State.MS);
 
 
     }
@@ -309,7 +310,6 @@ public class Player extends EntityB {
                     State currentState = ((OBJ_Package)gp.obj[i]).getState();
                     if (currentDestination.getName().equals(currentState.getName())) {
                         gp.playSE(3);
-                        npc1Flag = false;
                         gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
                         removeDestination(currentState);
                         currentDestination = getNextDestination();

@@ -7,6 +7,8 @@ import javax.imageio.ImageIO;
 
 public class OBJ_Package extends SuperObject {
 
+    public boolean pickedUp = false;
+
     private State state;
     public OBJ_Package(State state) {
 
@@ -17,7 +19,7 @@ public class OBJ_Package extends SuperObject {
         this.state = state;
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/worldobjects/package.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/package.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
