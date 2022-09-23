@@ -29,7 +29,7 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) 1.03;
+    private float gasDeincrement = (float) .08;
 
     private Set<State> destinations;
 
@@ -42,6 +42,7 @@ public class Player extends EntityB {
 
     //    public static int packageCounter = 0;
     public static int packageDelivered = 0;
+    public static String topScores;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -142,6 +143,20 @@ public class Player extends EntityB {
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
             if(truckFlag){
+                if(gasCount < 1){
+                    gp.ui.gameLost = true;
+                    double playTime = UI.playTime;
+                    GameSaver saver = null;
+                    try {
+                        saver = GameSaver.getInstance();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    GameRecord record = new GameRecord("Trucker", playTime);
+                    saver.addRecord(record);
+
+                    topScores = saver.getTopRanks(3);
+                }
                 if(gasCount<1){
                     speed = 6;
                 }
@@ -200,7 +215,8 @@ public class Player extends EntityB {
     public void pickUpObject(int i) {
 
         if (i != 999) {
-            if (packageDelivered == 1) {
+
+            if (packageDelivered == 2) {
                 gp.ui.gameFinished = true;
                 double playTime = UI.playTime;
                 GameSaver saver = null;
@@ -213,6 +229,7 @@ public class Player extends EntityB {
                 saver.addRecord(record);
                 saver.saveToJSON();
                 System.out.println(saver.getTopRanks(20));
+                topScores = (saver.getTopRanks(20)).toString();
 
             }
 

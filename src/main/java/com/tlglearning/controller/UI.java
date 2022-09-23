@@ -36,12 +36,9 @@ public class UI {
     public String message = "";
     public int messageCounter = 0;
     public boolean gameFinished = false;
+    public boolean gameLost = false;
     public static double playTime;
     boolean messageFlag = true;
-
-
-
-
 
 
     DecimalFormat df = new DecimalFormat("#0.00");
@@ -111,7 +108,51 @@ public class UI {
         t.start();
     }
 
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
+        if (gameLost) {
+
+            g2.setFont(arial_20);
+            g2.setColor(Color.WHITE);
+
+            String text;
+            int textLength;
+            int x;
+            int y;
+
+            text = "You have been fired! At least you grabbed your severance package...";
+            textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight / 2 - (gp.tileSize * 3);
+            g2.drawString(text, x, y);
+
+
+            text = "It only took you " + df.format(playTime) + " seconds to lose. Play again to win!!";
+            textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight / 2 - (gp.tileSize);
+            g2.drawString(text, x, y);
+
+
+            String scores = Player.topScores;
+            int scoresLength = (int) g2.getFontMetrics().getStringBounds(scores, g2).getWidth();
+            x = gp.screenWidth / 2 - scoresLength / 2;
+            y = gp.screenHeight / 2 - (gp.tileSize);
+            g2.drawString(scores, x, y + 50);
+
+
+            g2.setFont(arial_80B);
+            g2.setColor(Color.YELLOW);
+            text = "You LOSE!!";
+            textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gp.screenWidth / 2 - textLength / 2;
+            y = gp.screenHeight / 2 - (gp.tileSize * 4);
+            g2.drawString(text, x, y);
+
+
+            gp.gameThread.stop();
+
+
+        }
         if (gameFinished) {
 
             g2.setFont(arial_20);
@@ -189,12 +230,12 @@ public class UI {
                 g2.drawImage(introImage, 0, gp.tileSize - 50, gp.screenWidth, gp.screenHeight + 30, null);
 
                 g2.setColor(Color.BLACK);
-                g2.drawString(text, x, y+10);
-                g2.drawString(text1, x1, y1+90);
-                g2.drawString(text2, x2, y2+160);
+                g2.drawString(text, x, y + 10);
+                g2.drawString(text1, x1, y1 + 90);
+                g2.drawString(text2, x2, y2 + 160);
                 g2.setFont(introFont);
                 g2.setColor(Color.RED);
-                g2.drawString(text3, x3-160, y3-40);
+                g2.drawString(text3, x3 - 160, y3 - 40);
 
 
             }
@@ -209,7 +250,7 @@ public class UI {
                 String text1 = "- Get the needed items to get in the truck.";
                 String text2 = "- Get in the truck and pickup the first package.";
                 String text3 = "- Deliver 3 packages to win the game!";
-                String text4 = "Your time is being recorded, hurry!  "+df.format(playTime);
+                String text4 = "Your time is being recorded, hurry!  " + df.format(playTime);
                 String text5 = "- Once acquired, press the space bar to start your radio.";
                 String text6 = "- Press h to close the help menu.";
                 String text7 = "Objective:";
@@ -246,11 +287,11 @@ public class UI {
             if (KeyHandlerB.enterPressed) {
 
                 /* static display, inventory, destination, state, while in truck */
-                if (Player.truckFlag){
+                if (Player.truckFlag) {
                     OBJ_Gas gas = new OBJ_Gas();
                     gasImage = gas.image;
 
-                    g2.drawImage(inventoryImage, 0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3, null);
+                    g2.drawImage(inventoryImage, 0, gp.tileSize * 10, gp.screenWidth, gp.screenHeight / 3, null);
 
 
 //                    g2.drawImage(inventoryImage, 0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3, null);
@@ -258,42 +299,42 @@ public class UI {
                     g2.setColor(Color.BLACK);
 
                     g2.drawImage(gpsImage, 30, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getPlayerState(), 65, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getPlayerState(), 65, gp.tileSize * 11 + 20);
 
-                    g2.drawString("Destination: ", 185, gp.tileSize * 11+20);
-                    g2.drawString(""+Player.packageDelivered , 290, gp.tileSize * 11+20);
+                    g2.drawString("Destination: ", 185, gp.tileSize * 11 + 20);
+                    g2.drawString("" + player.getCurrentDestination().toString(), 290, gp.tileSize * 11 + 20);
 
-                    g2.drawString("Deliveries: ", 385, gp.tileSize * 11+20);
-                    g2.drawString("" + player.getCurrentDestination().toString(), 490, gp.tileSize * 11+20);
+                    g2.drawString("Deliveries: ", 385, gp.tileSize * 11 + 20);
+                    g2.drawString("" + Player.packageDelivered, 490, gp.tileSize * 11 + 20);
 
-                    g2.drawImage(gasImage, 620, gp.tileSize * 10, gp.tileSize + 40, gp.tileSize +40, null);
+                    g2.drawImage(gasImage, 640, gp.tileSize * 10, gp.tileSize + 80, gp.tileSize + 60, null);
                 }
                 /* static display, inventory while in office */
                 else {
-                    g2.drawImage(inventoryImage, 0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3, null);
+                    g2.drawImage(inventoryImage, 0, gp.tileSize * 10, gp.screenWidth, gp.screenHeight / 3, null);
                     g2.setFont(arial_20);
                     g2.setColor(Color.BLACK);
                     g2.drawImage(gpsImage, 80, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getPlayerState(), 115, gp.tileSize * 11+20);
-                    g2.drawString("Items:", 5, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getPlayerState(), 115, gp.tileSize * 11 + 20);
+                    g2.drawString("Items:", 5, gp.tileSize * 11 + 20);
 
                     g2.drawImage(coffeeImage, 180, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Coffee"), 215, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Coffee"), 215, gp.tileSize * 11 + 20);
 
                     g2.drawImage(radioImage, 280, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Radio"), 315, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Radio"), 315, gp.tileSize * 11 + 20);
 
                     g2.drawImage(thermosImage, 380, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Thermos"), 415, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Thermos"), 415, gp.tileSize * 11 + 20);
 
                     g2.drawImage(vendingImage, 480, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Soda"), 515, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Soda"), 515, gp.tileSize * 11 + 20);
 
                     g2.drawImage(folderImage, 580, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Folder"), 615, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Folder"), 615, gp.tileSize * 11 + 20);
 
                     g2.drawImage(truckKeyImage, 680, gp.tileSize * 11, gp.tileSize - 20, gp.tileSize - 20, null);
-                    g2.drawString("= " + gp.getItemCount("Truck Key"), 715, gp.tileSize * 11+20);
+                    g2.drawString("= " + gp.getItemCount("Truck Key"), 715, gp.tileSize * 11 + 20);
                 }
 
                 playTime += (double) 1 / 60;
@@ -316,7 +357,6 @@ public class UI {
             }
         }
     }
-
 
 
     public void sleep(int time) {
