@@ -1,7 +1,6 @@
 package com.tlglearning.model;
 
-import com.tlglearning.controller.GamePanelB;
-import com.tlglearning.controller.KeyHandlerB;
+import com.tlglearning.controller.*;
 import com.tlglearning.model.objects.OBJ_Package;
 
 import javax.imageio.ImageIO;
@@ -29,6 +28,8 @@ public class Player extends EntityB {
     boolean deskFlag = true;
     boolean npc1Flag = true;
     public static boolean truckFlag;
+    public static float gasCount = 100;
+    private float gasDeincrement = (float) 1.03;
 
     private Set<State> destinations;
 
@@ -39,7 +40,7 @@ public class Player extends EntityB {
     Tile tile = new Tile();
     EntityB entity = new EntityB();
 
-//    public static int packageCounter = 0;
+    //    public static int packageCounter = 0;
     public static int packageDelivered = 0;
 
 
@@ -72,11 +73,13 @@ public class Player extends EntityB {
         destinations.add(State.TN);
         //destinations.add(State.MS);
     }
-    public State getCurrentDestination(){
+
+    public State getCurrentDestination() {
 
         return packagesInTrunck.isEmpty() ? State.MS : packagesInTrunck.get(0).getDestination();
 
     }
+
     /* Set Players default position */
     public void setDefaultPosition() {
         worldX = gp.tileSize * 5;
@@ -104,6 +107,7 @@ public class Player extends EntityB {
 
         if (truckFlag) {
             try {
+                gasCount = 100;
                 up1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up.png"));
                 up2 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_up1.png"));
                 down1 = ImageIO.read(getClass().getResourceAsStream("/player1/truck_down.png"));
@@ -137,11 +141,17 @@ public class Player extends EntityB {
             gp.cChecker.checkTile(this);
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
-            if (entity.onRoadOn && truckFlag) {
-                speed = 35;
-            } else if (!entity.onRoadOn && truckFlag) {
-                speed = 10;
+            if(truckFlag){
+                if(gasCount<1){
+                    speed = 6;
+                }
+                else if (onRoadOn && gasCount>=1) {
+                    speed = 35;
+                } else if (!onRoadOn && gasCount>=1) {
+                    speed = 10;
+                }
             }
+
 
             /* Check Obj Collision */
 
@@ -153,15 +163,21 @@ public class Player extends EntityB {
                 switch (direction) {
                     case "up":
                         worldY -= speed;
+                        gasCount = gasCount - gasDeincrement;
                         break;
                     case "down":
                         worldY += speed;
+                        gasCount = gasCount - gasDeincrement;
                         break;
                     case "left":
                         worldX -= speed;
+                        gasCount = gasCount - gasDeincrement;
+
                         break;
                     case "right":
                         worldX += speed;
+                        gasCount = gasCount - gasDeincrement;
+
                         break;
                 }
             }
@@ -184,8 +200,20 @@ public class Player extends EntityB {
     public void pickUpObject(int i) {
 
         if (i != 999) {
-            if (packageDelivered == 1){
+            if (packageDelivered == 1) {
                 gp.ui.gameFinished = true;
+                double playTime = UI.playTime;
+                GameSaver saver = null;
+                try {
+                    saver = GameSaver.getInstance();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                GameRecord record = new GameRecord("Trucker", playTime);
+                saver.addRecord(record);
+                saver.saveToJSON();
+                System.out.println(saver.getTopRanks(20));
+
             }
 
             String objectName = gp.obj[i].name;
@@ -197,7 +225,7 @@ public class Player extends EntityB {
                     gp.ui.showMessage("The truck radio is broken, fortunately you find a spare! Play some tunes with the space bar!");
                     gp.obj[i] = null;
                     break;
-                    /* add key to inventory */
+                /* add key to inventory */
 
                 case "TruckKey":
                     gp.playSE(2);
@@ -329,9 +357,9 @@ public class Player extends EntityB {
 //                        break;
 //                    }
 
-                    OBJ_Package shipping= (OBJ_Package)gp.obj[i];
+                    OBJ_Package shipping = (OBJ_Package) gp.obj[i];
 
-                    if (!pickupPackage(shipping) && !deliverAndPickupPackage(shipping)){
+                    if (!pickupPackage(shipping) && !deliverAndPickupPackage(shipping)) {
                         gp.playSE(8);
 
                         gp.ui.showMessage("You are current in " + shipping.getState() + ".  You supposed to pick up " + getCurrentDestination());
@@ -470,8 +498,8 @@ public class Player extends EntityB {
         return false;
     }
 
-    public boolean deliverAndPickupPackage(OBJ_Package pickup){
-        if (packagesInTrunck.size() == 0 || getCurrentDestination() == null){
+    public boolean deliverAndPickupPackage(OBJ_Package pickup) {
+        if (packagesInTrunck.size() == 0 || getCurrentDestination() == null) {
             return false;
         }
 
@@ -486,17 +514,16 @@ public class Player extends EntityB {
             packagesInTrunck.add(pickup);
             packageDelivered++;
 
-            gp.ui.showMessage("You have delivered package in " +  pickup.getState().getName() + " and your next destination is " + getCurrentDestination());
+            gp.ui.showMessage("You have delivered package in " + pickup.getState().getName() + " and your next destination is " + getCurrentDestination());
             //gp.ui.showMessage("You have delivered package in " +  deliverLocation.getState().getName() + "  !");
             return true;
         }
 
 
-
         return false;
     }
 
-    public int getPackagesDelivered(){
+    public int getPackagesDelivered() {
         return packageDelivered;
     }
 

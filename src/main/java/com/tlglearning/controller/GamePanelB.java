@@ -32,12 +32,13 @@ public class GamePanelB extends JPanel implements Runnable {
 
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
-    public UI ui = new UI(this);
+    public Player player = new Player(this, keyH);
+    public UI ui = new UI(this, player);
 
 
     Thread gameThread;
 
-    public Player player = new Player(this, keyH);
+
     public SuperObject obj[] = new SuperObject[35];
 
 
@@ -199,9 +200,6 @@ public class GamePanelB extends JPanel implements Runnable {
                 state = "No Signal";
             }
         }
-
-
-
         return state;
     }
 

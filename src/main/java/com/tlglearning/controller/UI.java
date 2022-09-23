@@ -8,7 +8,6 @@ import com.tlglearning.model.objects.*;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class UI {
@@ -32,12 +31,15 @@ public class UI {
 
     BufferedImage folderImage;
     BufferedImage truckKeyImage;
+    BufferedImage gasImage;
     public boolean messageOn = false;
     public String message = "";
     public int messageCounter = 0;
     public boolean gameFinished = false;
-    float playTime;
+    public static double playTime;
     boolean messageFlag = true;
+
+
 
 
 
@@ -45,8 +47,11 @@ public class UI {
     DecimalFormat df = new DecimalFormat("#0.00");
 
 
-    public UI(GamePanelB gp) {
+    private Player player;
 
+    public UI(GamePanelB gp, Player player) {
+
+        this.player = player;
         this.gp = gp;
         arial_20 = new Font("Arial", Font.PLAIN, 20);
         introFont = new Font("DialogInput", Font.ITALIC, 60);
@@ -67,6 +72,7 @@ public class UI {
         helpImage = help.image;
         InventoryBar inventory = new InventoryBar();
         inventoryImage = inventory.image;
+
 
         OBJ_Radio radio = new OBJ_Radio();
         radioImage = radio.image;
@@ -137,16 +143,7 @@ public class UI {
             x = gp.screenWidth / 2 - textLength / 2;
             y = gp.screenHeight / 2 + (gp.tileSize * 2);
             g2.drawString(text, x, y);
-            GameSaver saver = null;
-            try {
-                saver = GameSaver.getInstance();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            GameRecord record = new GameRecord("Trucker",playTime);
-            saver.addRecord(record);
-            saver.saveToJSON();
-            System.out.println(saver.getTopRanks(1));
+
 
             gp.gameThread.stop();
 
@@ -190,7 +187,6 @@ public class UI {
                 y3 = gp.screenHeight / 2 - (gp.tileSize * 3);
 
                 g2.drawImage(introImage, 0, gp.tileSize - 50, gp.screenWidth, gp.screenHeight + 30, null);
-
 
                 g2.setColor(Color.BLACK);
                 g2.drawString(text, x, y+10);
@@ -248,10 +244,14 @@ public class UI {
 
             }
             if (KeyHandlerB.enterPressed) {
+
                 /* static display, inventory, destination, state, while in truck */
                 if (Player.truckFlag){
+                    OBJ_Gas gas = new OBJ_Gas();
+                    gasImage = gas.image;
 
                     g2.drawImage(inventoryImage, 0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3, null);
+
 
 //                    g2.drawImage(inventoryImage, 0, gp.tileSize*10, gp.screenWidth, gp.screenHeight / 3, null);
                     g2.setFont(arial_20);
@@ -264,7 +264,9 @@ public class UI {
                     g2.drawString(""+Player.packageDelivered , 290, gp.tileSize * 11+20);
 
                     g2.drawString("Deliveries: ", 385, gp.tileSize * 11+20);
-                    g2.drawString("" + Player.packageDelivered, 490, gp.tileSize * 11+20);
+                    g2.drawString("" + player.getCurrentDestination().toString(), 490, gp.tileSize * 11+20);
+
+                    g2.drawImage(gasImage, 620, gp.tileSize * 10, gp.tileSize + 40, gp.tileSize +40, null);
                 }
                 /* static display, inventory while in office */
                 else {
@@ -294,7 +296,7 @@ public class UI {
                     g2.drawString("= " + gp.getItemCount("Truck Key"), 715, gp.tileSize * 11+20);
                 }
 
-                playTime += (float) 1 / 60;
+                playTime += (double) 1 / 60;
 
 
                 if (messageOn) {

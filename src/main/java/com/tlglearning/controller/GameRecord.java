@@ -5,27 +5,27 @@ import java.time.format.DateTimeFormatter;
 
 public class GameRecord implements Comparable<GameRecord>{
     private String playerName;
-    private float playTime;
+    private double playDuration;
 
     private String gameDate;
 
 
     public GameRecord(){
-        this("", 0);
+        this("", 0.0);
     }
 
-    public GameRecord(String playerName, float playTime){
+    public GameRecord(String playerName, double playDuration){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
         LocalDateTime now = LocalDateTime.now();
         gameDate = formatter.format(now);
         this.playerName = playerName;
-        this.playTime = playTime;
+        this.playDuration = playDuration;
     }
 
 
     @Override
     public int compareTo(GameRecord other) {
-        return (int) ((int) playTime - other.playTime);
+        return Double.compare(playDuration, other.playDuration);
     }
 
 
@@ -33,7 +33,7 @@ public class GameRecord implements Comparable<GameRecord>{
     public String toString() {
         return "GameRecord{" +
                 "playerName='" + playerName + '\'' +
-                ", playTime=" + playTime +
+                ", playTime=" + playDuration +
                 ", gameDate=" + gameDate +
                 '}';
     }
@@ -42,7 +42,9 @@ public class GameRecord implements Comparable<GameRecord>{
         return playerName;
     }
 
-
+    public double getPlayDuration() {
+        return playDuration;
+    }
 
     public String getGameDate() {
         return gameDate;
