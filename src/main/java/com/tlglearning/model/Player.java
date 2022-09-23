@@ -8,15 +8,14 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class Player extends EntityB {
 
     GamePanelB gp;
     KeyHandlerB keyH;
+    public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Vending", "Folder"));
+
 
     public final int screenX;
     public final int screenY;
@@ -27,16 +26,19 @@ public class Player extends EntityB {
     boolean coffeeFlag = true;
     boolean deskFlag = true;
     boolean npc1Flag = true;
-    boolean truckFlag;
+    public static boolean truckFlag;
 
     private Set<State> destinations;
 
     private State currentDestination;
 
+    private LinkedList<OBJ_Package> packagesInTrunck;
+
     Tile tile = new Tile();
     EntityB entity = new EntityB();
 
     public static int packageCounter = 0;
+    private int packageDelivered = 0;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -55,7 +57,8 @@ public class Player extends EntityB {
         getPlayerImage();
 
         setDestinations();
-        currentDestination = getNextDestination();
+//        currentDestination = getNextDestination();
+        packagesInTrunck = new LinkedList<>();
     }
 
     public void setDestinations() {
@@ -65,17 +68,18 @@ public class Player extends EntityB {
         destinations.add(State.OH);
         destinations.add(State.SC);
         destinations.add(State.TN);
-        destinations.add(State.MS);
+        //destinations.add(State.MS);
+    }
+    public State getCurrentDestination(){
 
+        return packagesInTrunck.isEmpty() ? State.MS : packagesInTrunck.get(0).getDestination();
 
     }
-
-
     /* Set Players default position */
     public void setDefaultPosition() {
         worldX = gp.tileSize * 5;
         worldY = gp.tileSize * 184;
-        speed = 11;
+        speed = 6;
         direction = "down";
     }
 
@@ -132,9 +136,9 @@ public class Player extends EntityB {
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
             if (entity.onRoadOn && truckFlag) {
-                speed = 47;
-            } else if (!entity.onRoadOn) {
-                speed = 17;
+                speed = 35;
+            } else if (!entity.onRoadOn && truckFlag) {
+                speed = 10;
             }
 
             /* Check Obj Collision */
@@ -279,7 +283,7 @@ public class Player extends EntityB {
                         gp.playSE(3);
                         coffeeFlag = false;
                         gp.ui.showMessage("You got your coffee! One step closer!");
-                        speed -= 4;
+                        neededItems.remove("Coffee");
                         break;
                     }
                     break;
@@ -287,9 +291,9 @@ public class Player extends EntityB {
                 case "NPC1":
                     if (npc1Flag) {
                         gp.playSE(3);
+                        neededItems.remove("Radio");
                         npc1Flag = false;
-                        gp.ui.showMessage("HR Coordinator: Aren't you leaving soon? You might need this logbook.");
-                        speed -= 4;
+                        gp.ui.showMessage("HR Coordinator: The truck radio is broken, take this one instead!");
                         break;
                     } else {
                         gp.playSE(8);
@@ -297,35 +301,54 @@ public class Player extends EntityB {
 
                     }
                     break;
+                case "GPS":
+
+                    gp.playSE(3);
+
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("You got the GPS! You can now see your location!");
+                    neededItems.remove("GPS");
+                    break;
 
 
                 case "Package":
-                    if (currentDestination == null) {
-                        packageCounter += 1;
-                        gp.ui.showMessage("You deliver results!");
-                        break;
-                    }
+//                    if (currentDestination == null) {
+//                        //packageCounter += 1;
+//                        gp.ui.showMessage("You deliver results!");
+//                        break;
+//                    }
 
-                    State currentState = ((OBJ_Package) gp.obj[i]).getState();
-                    if (currentDestination.getName().equals(currentState.getName())) {
-                        gp.playSE(3);
-                        gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
-                        removeDestination(currentState);
-                        currentDestination = getNextDestination();
-                        if (currentDestination == null) {
-                            gp.ui.showMessage("You picked up everything");
-                        }
+                    OBJ_Package shipping= (OBJ_Package)gp.obj[i];
 
-                        gp.ui.showMessage("you got these left as your destinations: " + destinations);
-                        speed -= 4;
-                        break;
-                    } else {
+                    if (!pickupPackage(shipping) && !deliverAndPickupPackage(shipping)){
                         gp.playSE(8);
-                        //gp.ui.showMessage("HR Coordinator: Safe travels!");
-                        gp.ui.showMessage("You are current in " + currentState.getName() + ".  You supposed to pick up " + currentDestination.getName() + "you got these left as your destinations: " + destinations);
+
+                        gp.ui.showMessage("You are current in " + shipping.getState() + ".  You supposed to pick up " + getCurrentDestination());
 
                     }
-                    break;
+
+//                    //  ((OBJ_Package) gp.obj[i]).getPickedUp();
+//                    State currentState = ((OBJ_Package) gp.obj[i]).getState();
+//                    if (currentDestination.getName().equals(currentState.getName())) {
+//                        ((OBJ_Package) gp.obj[i]).getPickedUp();
+//                        gp.playSE(3);
+//                        gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
+//                        removeDestination(currentState);
+//                        currentDestination = getNextDestination();
+//                        if (currentDestination == null) {
+//                            gp.ui.showMessage("You picked up everything");
+//                        }
+//
+//                        gp.ui.showMessage("you got these left as your destinations: " + destinations);
+//                        speed -= 4;
+//                        break;
+//                    } else {
+//                        gp.playSE(8);
+//                        //gp.ui.showMessage("HR Coordinator: Safe travels!");
+//                        gp.ui.showMessage("You are current in " + currentState.getName() + ".  You supposed to pick up " + currentDestination.getName() + "you got these left as your destinations: " + destinations);
+//
+//                    }
+//                    break;
 
 
             }
@@ -414,6 +437,56 @@ public class Player extends EntityB {
 
 
         return null;
+    }
+
+    public boolean pickupPackage(OBJ_Package pickup) {
+        if (packagesInTrunck.size() > 0) {
+            return false;
+        }
+
+
+        State currentState = pickup.getState();
+        if (getCurrentDestination().getName().equals(currentState.getName())) {
+            pickup.getPickedUp();
+            gp.playSE(3);
+            //removeDestination(currentState);
+            pickup.setDestination(getNextDestination());
+            packagesInTrunck.add(pickup);
+            gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "; Your destination is " + getCurrentDestination().getName() + " " + getCurrentDestination().getSaying() + packagesInTrunck.get(0).getState());
+
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deliverAndPickupPackage(OBJ_Package pickup){
+        if (packagesInTrunck.size() == 0 || getCurrentDestination() == null){
+            return false;
+        }
+
+        State currentState = pickup.getState();
+
+        if (getCurrentDestination().getName().equals(currentState.getName())) {
+            gp.playSE(3);
+            removeDestination(getCurrentDestination());
+            packagesInTrunck.clear();
+            pickup.getPickedUp();
+            pickup.setDestination(getNextDestination());
+            packagesInTrunck.add(pickup);
+            packageDelivered++;
+
+            gp.ui.showMessage("You have delivered package in " +  pickup.getState().getName() + " and your next destination is " + getCurrentDestination());
+            //gp.ui.showMessage("You have delivered package in " +  deliverLocation.getState().getName() + "  !");
+            return true;
+        }
+
+
+
+        return false;
+    }
+
+    public int getPackagesDelivered(){
+        return packageDelivered;
     }
 
     public boolean removeDestination(State state) {

@@ -33,6 +33,8 @@ public class GamePanelB extends JPanel implements Runnable {
     public CollisionChecker cChecker = new CollisionChecker(this);
     public AssetSetter aSetter = new AssetSetter(this);
     public UI ui = new UI(this);
+
+
     Thread gameThread;
 
     public Player player = new Player(this, keyH);
@@ -104,9 +106,11 @@ public class GamePanelB extends JPanel implements Runnable {
         /* Draw the player */
         player.draw(g2);
 
+
         /* Draw the UI,have multiple for play inventory in office vs driving etc.. */
 //        if (player.worldY<2000) {
-            ui.draw(g2);
+        ui.draw(g2);
+
 //        }
 //        ui.draw(g2);
 
@@ -114,16 +118,17 @@ public class GamePanelB extends JPanel implements Runnable {
         g2.dispose();
     }
 
-    public void playMusic(int i){
+    public void playMusic(int i) {
         music.setFile(i);
         music.play();
         music.loop();
     }
-    public void stopMusic(){
+
+    public void stopMusic() {
         music.stop();
     }
 
-    public void playSE(int i){
+    public void playSE(int i) {
         Thread sound1 = new Thread(new Runnable() {
 
             @Override
@@ -146,11 +151,65 @@ public class GamePanelB extends JPanel implements Runnable {
 //        sound.play();
     }
 
-    public void sleep(int i){
+    public void sleep(int i) {
         try {
             Thread.sleep(i);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public String getPlayerState() {
+        int x = player.worldX;
+        int y = player.worldY;
+        String state = " ";
+
+        if (Player.neededItems.contains("GPS")) {
+            state = "0";
+        } else {
+
+            if (x > 0 && x < 5000 && y > 6700 && y < 9700) {
+                state = "MS";
+            } else if (x > 0 && x < 8001 && y > 4200 && y < 6700) {
+                state = "TN";
+            } else if (x > 0 && x < 8500 && y > 2501 && y < 4200) {
+                state = "KY";
+            } else if (x > 0 && x < 2000 && y > 0 && y < 2200) {
+                state = "IL";
+            } else if (x > 4000 && x < 7001 && y > 0 && y < 2200) {
+                state = "OH";
+            } else if (x > 2001 && x < 3900 && y > 0 && y < 2200) {
+                state = "IN";
+            } else if (x > 5001 && x < 8550 && y > 6701 && y < 9700) {
+                state = "AL";
+            } else if (x > 8551 && x < 12000 && y > 7701 && y < 9700) {
+                state = "GA";
+            } else if (x > 9900 && x < 12000 && y > 6700 && y < 7700) {
+                state = "SC";
+            } else if (x > 8000 && x < 12000 && y > 4200 && y < 6699) {
+                state = "NC";
+            } else if (x > 8500 && x < 12000 && y > 2001 && y < 4200) {
+                state = "VA";
+            } else if (x > 9800 && x < 12000 && y > 0 && y < 2001) {
+                state = "MD";
+            } else if (x > 7000 && x < 9801 && y > 0 && y < 2501) {
+                state = "WV";
+            } else {
+                state = "No Signal";
+            }
+        }
+
+
+
+        return state;
+    }
+
+    public int getItemCount(String s){
+
+        if (Player.neededItems.contains(s)){
+            return 0;
+        }
+        return 1;
     }
 }

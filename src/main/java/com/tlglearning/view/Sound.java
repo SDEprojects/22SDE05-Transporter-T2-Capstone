@@ -13,8 +13,8 @@ public class Sound {
     public Sound(){
 
         /* songs */
-        soundURL[0] = getClass().getResource("/sounds/musictheme.wav");
-        soundURL[1] = getClass().getResource("/sounds/werewolfsong.wav");
+        soundURL[0] = getClass().getResource("/sounds/musictheme_dropkickmurph.wav");
+        soundURL[1] = getClass().getResource("/sounds/musictheme1_cornered.wav");
 
         /* success sounds */
         soundURL[2] = getClass().getResource("/sounds/coin.wav");

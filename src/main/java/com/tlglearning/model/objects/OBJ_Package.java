@@ -7,13 +7,12 @@ import javax.imageio.ImageIO;
 
 public class OBJ_Package extends SuperObject {
 
-    public boolean pickedUp = false;
+    private boolean pickedUp = false;
+
 
     private State state;
+    private State destination;
     public OBJ_Package(State state) {
-
-
-
 
         name = "Package";
         this.state = state;
@@ -24,6 +23,30 @@ public class OBJ_Package extends SuperObject {
             e.printStackTrace();
         }
     }
+
+    public boolean getPickedUp(){
+
+        if (pickedUp == true){
+            return false;
+        }
+
+        pickedUp = true;
+        try {
+            image = ImageIO.read(getClass().getResourceAsStream("/objects/packageempty.png"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public void setDestination(State state){
+        this.destination = state;
+    }
+
+    public State getDestination(){
+        return destination;
+    }
+
 
     public State getState(){
         return state;
