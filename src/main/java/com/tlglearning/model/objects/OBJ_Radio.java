@@ -6,7 +6,7 @@ import javax.imageio.ImageIO;
 
 public class OBJ_Radio extends SuperObject {
     public OBJ_Radio() {
-        name = "radio";
+        name = "Radio";
 
         try {
             image = ImageIO.read(getClass().getResourceAsStream("/objects/radio.png"));

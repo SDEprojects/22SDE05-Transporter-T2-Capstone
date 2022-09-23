@@ -14,6 +14,7 @@ public class OBJ_Coffee extends SuperObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        collision = true;
     }
 
 }

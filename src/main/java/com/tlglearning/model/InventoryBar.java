@@ -7,7 +7,7 @@ public class InventoryBar extends SuperObject {
         name = "Inventory";
 
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/help_bg.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/inventory_bg.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }

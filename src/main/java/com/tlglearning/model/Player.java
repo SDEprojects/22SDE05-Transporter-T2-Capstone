@@ -14,9 +14,11 @@ public class Player extends EntityB {
 
     GamePanelB gp;
     KeyHandlerB keyH;
-    public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Vending", "Folder"));
+    public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Soda", "Folder", "Truck Key", "Tech Office Key", "Thermos"));
 
 
+    // needed - RADIO HAS BLANK SPOT, CAN FIT 2 MORE - FOLDER, TRUCK KEY, KEY
+    // already on - gps(needs new image), thermos(new image), radio, vending.
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
@@ -37,8 +39,8 @@ public class Player extends EntityB {
     Tile tile = new Tile();
     EntityB entity = new EntityB();
 
-    public static int packageCounter = 0;
-    private int packageDelivered = 0;
+//    public static int packageCounter = 0;
+    public static int packageDelivered = 0;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -180,18 +182,23 @@ public class Player extends EntityB {
     }
 
     public void pickUpObject(int i) {
-        Tile tile = new Tile();
+
         if (i != 999) {
+            if (packageDelivered == 1){
+                gp.ui.gameFinished = true;
+            }
+
             String objectName = gp.obj[i].name;
             switch (objectName) {
-                case "Key":
+                case "Radio":
                     gp.playSE(2);
-                    /* add key to inventory */
-                    hasKey++;
-                    /* remove object from game */
+                    neededItems.remove("Radio");
+                    npc1Flag = false;
+                    gp.ui.showMessage("The truck radio is broken, fortunately you find a spare! Play some tunes with the space bar!");
                     gp.obj[i] = null;
-                    gp.ui.showMessage("You picked up a key!");
                     break;
+                    /* add key to inventory */
+
                 case "TruckKey":
                     gp.playSE(2);
                     /* add key to inventory */
@@ -199,6 +206,7 @@ public class Player extends EntityB {
                     /* remove object from game */
                     gp.obj[i] = null;
                     gp.ui.showMessage("You picked up the keys to the truck!");
+                    neededItems.remove("Truck Key");
                     break;
                 case "Door":
                     if (hasKey > 0) {
@@ -208,7 +216,7 @@ public class Player extends EntityB {
                         gp.ui.showMessage("You unlocked the door!");
                     } else {
                         gp.playSE(6);
-                        gp.ui.showMessage("The door is locked! You knock but no one answers");
+                        gp.ui.showMessage("The door to the Tech Office is locked! You remember that HR has the key.");
 
                     }
                     break;
@@ -243,9 +251,9 @@ public class Player extends EntityB {
                     break;
                 case "Thermos":
                     gp.playSE(3);
-                    gp.ui.showMessage("Nice - you got your thermos!!");
-                    speed += 10;
+                    gp.ui.showMessage("Nice - you got your thermos! One step closer to getting on the road!");
                     gp.obj[i] = null;
+                    neededItems.remove("Thermos");
                     break;
 //                case "Chest":
 //                    gp.playSE(5);
@@ -255,7 +263,7 @@ public class Player extends EntityB {
 //                    break;
                 case "Chest":
                     gp.ui.gameFinished = true;
-                    gp.stopMusic();
+//                    gp.stopMusic();
                     gp.playSE(5);
 //                    gp.ui.gameFinished = true;
 //                    gp.stopMusic();
@@ -264,8 +272,9 @@ public class Player extends EntityB {
                 case "Desk":
                     if (deskFlag) {
                         gp.playSE(3);
-                        gp.ui.showMessage("You got the folder from the bosses desk!");
+                        gp.ui.showMessage("You snag your severance package while your boss sleeps at his desk, just in case...");
                         deskFlag = false;
+                        neededItems.remove("Folder");
                         break;
                     }
                     break;
@@ -273,16 +282,18 @@ public class Player extends EntityB {
                     if (vendingFlag) {
                         gp.playSE(3);
                         vendingFlag = false;
-                        gp.ui.showMessage("You got the soda from the vending machine!");
-                        speed -= 3;
+                        gp.ui.showMessage("You got the soda from the vending machine! You drink it and feel a nice caffeine boost...");
+                        speed += 2;
+                        neededItems.remove("Soda");
                         break;
                     }
                     break;
                 case "Coffee":
                     if (coffeeFlag) {
                         gp.playSE(3);
+                        speed += 2;
                         coffeeFlag = false;
-                        gp.ui.showMessage("You got your coffee! One step closer!");
+                        gp.ui.showMessage("You got your coffee! You feel POWER as caffeine courses through your veins...");
                         neededItems.remove("Coffee");
                         break;
                     }
@@ -290,10 +301,12 @@ public class Player extends EntityB {
                 /* HR rep female sprite in HR office */
                 case "NPC1":
                     if (npc1Flag) {
-                        gp.playSE(3);
-                        neededItems.remove("Radio");
+                        gp.playSE(2);
+                        hasKey++;
+                        /* remove object from game */
+                        neededItems.remove("Tech Office Key");
                         npc1Flag = false;
-                        gp.ui.showMessage("HR Coordinator: The truck radio is broken, take this one instead!");
+                        gp.ui.showMessage("HR Coordinator: The radio and GPS in the truck are broken, take this key to the Tech Office to get the spares! ");
                         break;
                     } else {
                         gp.playSE(8);
@@ -302,11 +315,9 @@ public class Player extends EntityB {
                     }
                     break;
                 case "GPS":
-
                     gp.playSE(3);
-
                     gp.obj[i] = null;
-                    gp.ui.showMessage("You got the GPS! You can now see your location!");
+                    gp.ui.showMessage("You got the GPS! You can now see your location. You are in Mississippi!");
                     neededItems.remove("GPS");
                     break;
 
