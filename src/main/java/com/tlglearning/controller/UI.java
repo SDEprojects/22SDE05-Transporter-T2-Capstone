@@ -307,6 +307,9 @@ public class UI {
                     g2.drawString("Deliveries: ", 385, gp.tileSize * 11 + 20);
                     g2.drawString("" + Player.packageDelivered, 490, gp.tileSize * 11 + 20);
 
+
+                    g2.drawString("Money: " + player.getPlayerMoney(), 500, gp.tileSize * 11 + 20);
+
                     g2.drawImage(gasImage, 640, gp.tileSize * 10, gp.tileSize + 80, gp.tileSize + 60, null);
                 }
                 /* static display, inventory while in office */

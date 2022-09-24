@@ -82,6 +82,10 @@ public class AssetSetter {
         gp.obj[31].worldX = 26 * gp.tileSize;
         gp.obj[31].worldY = 176 * gp.tileSize;
 
+        gp.obj[32] = new OBJ_GasPump();
+        gp.obj[32].worldX = 26 * gp.tileSize;
+        gp.obj[32].worldY = 165 * gp.tileSize;
+
 
     }
 

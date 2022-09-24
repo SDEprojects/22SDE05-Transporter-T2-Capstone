@@ -31,13 +31,14 @@ public class Player extends EntityB {
     public static float gasCount = 100;
     private float gasDeincrement = (float) .08;
 
+    private int playerMoney = 0;
+
     private Set<State> destinations;
 
     private State currentDestination;
 
     private LinkedList<OBJ_Package> packagesInTrunck;
 
-    Tile tile = new Tile();
     EntityB entity = new EntityB();
 
     //    public static int packageCounter = 0;
@@ -142,27 +143,26 @@ public class Player extends EntityB {
             gp.cChecker.checkTile(this);
             entity.onRoadOn = false;
             gp.cChecker.checkRoad(this);
-            if(truckFlag){
-                if(gasCount < 1){
+            if (truckFlag) {
+                if (gasCount < 1) {
                     gp.ui.gameLost = true;
                     double playTime = UI.playTime;
-                    GameSaver saver = null;
+                    GameSaver saver1 = null;
                     try {
-                        saver = GameSaver.getInstance();
+                        saver1 = GameSaver.getInstance();
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    GameRecord record = new GameRecord("Trucker", playTime);
-                    saver.addRecord(record);
+                    GameRecord record1 = new GameRecord("Trucker", playTime);
+                    saver1.addRecord(record1);
 
-                    topScores = saver.getTopRanks(3);
+                    topScores = saver1.getTopRanks(3);
                 }
-                if(gasCount<1){
+                if (gasCount < 1) {
                     speed = 6;
-                }
-                else if (onRoadOn && gasCount>=1) {
+                } else if (onRoadOn && gasCount >= 1) {
                     speed = 35;
-                } else if (!onRoadOn && gasCount>=1) {
+                } else if (!onRoadOn && gasCount >= 1) {
                     speed = 10;
                 }
             }
@@ -229,7 +229,7 @@ public class Player extends EntityB {
                 saver.addRecord(record);
                 saver.saveToJSON();
                 System.out.println(saver.getTopRanks(20));
-                topScores = (saver.getTopRanks(20)).toString();
+
 
             }
 
@@ -365,7 +365,25 @@ public class Player extends EntityB {
                     gp.ui.showMessage("You got the GPS! You can now see your location. You are in Mississippi!");
                     neededItems.remove("GPS");
                     break;
-
+                case "GasPump":
+                    float gasByMoney = 100-gasCount;
+                    if (gasCount>90){
+                        gp.playSE(8);
+                        gp.ui.showMessage("You are already full on gas!");
+                        break;
+                    }
+                    else if(playerMoney>=100){
+                        gp.playSE(3);
+                        gasCount = 100;
+                        playerMoney-=gasByMoney;
+                        gp.ui.showMessage("You fill up your gas tank! It was $"+gasByMoney+", gas is expensive!");
+                        break;
+                    }
+                    else{
+                        gp.playSE(9);
+                        gp.ui.showMessage("You don't have enough money to fill up your gas tank!");
+                        break;
+                    }
 
                 case "Package":
 //                    if (currentDestination == null) {
@@ -508,7 +526,7 @@ public class Player extends EntityB {
             //removeDestination(currentState);
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
-            gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "; Your destination is " + getCurrentDestination().getName() + " " + getCurrentDestination().getSaying() + packagesInTrunck.get(0).getState());
+            gp.ui.showMessage("Nice! We got our first package. Our first destination is " + getCurrentDestination().getName() + ". " + getCurrentDestination().getSaying());
 
             return true;
         }
@@ -530,8 +548,9 @@ public class Player extends EntityB {
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
             packageDelivered++;
+            playerMoney += 500;
 
-            gp.ui.showMessage("You have delivered package in " + pickup.getState().getName() + " and your next destination is " + getCurrentDestination());
+            gp.ui.showMessage("You drop off the package in " + pickup.getState().getName() + ". Next stop is " + getCurrentDestination() + "!");
             //gp.ui.showMessage("You have delivered package in " +  deliverLocation.getState().getName() + "  !");
             return true;
         }
@@ -548,5 +567,7 @@ public class Player extends EntityB {
         return destinations.remove(state);
     }
 
-
+    public int getPlayerMoney() {
+        return playerMoney;
+    }
 }

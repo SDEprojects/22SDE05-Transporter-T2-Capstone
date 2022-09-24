@@ -11,7 +11,7 @@ public class GameRecord implements Comparable<GameRecord>{
 
 
     public GameRecord(){
-        this("", 0.0);
+        this("", 0);
     }
 
     public GameRecord(String playerName, double playDuration){
