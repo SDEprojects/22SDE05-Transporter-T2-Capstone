@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
@@ -14,58 +15,60 @@ public class GameSaver {
     private LinkedList<GameRecord> gameRecords;
 
     private GameSaver() throws IOException {
-        TypeReference<LinkedList<GameRecord>> typeRef = new TypeReference<>() {
-        };
+        TypeReference<LinkedList<GameRecord>> typeRef = new TypeReference<>() {};
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream actions = classLoader.getResourceAsStream("records.json");
         gameRecords = new ObjectMapper().readValue(actions, typeRef);
     }
 
     public static GameSaver getInstance() throws IOException {
-        if (instance == null) {
+        if (instance == null){
             instance = new GameSaver();
         }
         return instance;
     }
 
-    public void addRecord(GameRecord record) {
+    public void addRecord(GameRecord record){
         gameRecords.add(record);
     }
 
     public void saveToJSON() {
         ObjectMapper mapper = new ObjectMapper();
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try {
             mapper.writeValue(
-                    new FileOutputStream("src/main/resources/records.json"), gameRecords);
+                    new FileOutputStream("records.json"), gameRecords);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
 
-    public String getTopRanks(int top) {
-
-        Collections.sort(gameRecords);
-        StringBuilder sb = new StringBuilder();
-
-        for (GameRecord record : gameRecords) {
-            sb.append(record);
-            if (--top == 0) {
-                return sb.toString();
-            }
-        }
-        return sb.toString();
-    }
-//    public ArrayList<GameRecord> getTopRanks(int num){
+//    public String getTopRanks(int top){
 //
-//        int min = Math.min(gameRecords.size(), num);
+//        Collections.sort(gameRecords);
+//        StringBuilder sb = new StringBuilder();
 //
-//        ArrayList<GameRecord> res = new ArrayList<>();
-//
-//        for (int i = 0; i < min; i++){
-//            res.add(gameRecords.get(i));
+//        for (GameRecord record : gameRecords){
+//            sb.append(record);
+//            if (--top == 0){
+//                return sb.toString();
+//            }
 //        }
-//
-//        return res;
+//        return sb.toString();
 //    }
+public ArrayList<GameRecord> getTopRanks(int num){
+
+    int min = Math.min(gameRecords.size(), num);
+    ArrayList<GameRecord> res = new ArrayList<>();
+    Collections.sort(gameRecords);
+    for (int i = 0; i < min; i++){
+        res.add(gameRecords.get(i));
+    }
+
+    return res;
+}
+
+
+
 }

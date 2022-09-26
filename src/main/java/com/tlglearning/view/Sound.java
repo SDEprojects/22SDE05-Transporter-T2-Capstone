@@ -14,7 +14,7 @@ public class Sound {
 
         /* songs */
         soundURL[0] = getClass().getResource("/sounds/musictheme_dropkickmurph.wav");
-        soundURL[1] = getClass().getResource("/sounds/musictheme1_cornered.wav");
+        soundURL[1] = getClass().getResource("/sounds/cornered8bit.wav");
 
         /* success sounds */
         soundURL[2] = getClass().getResource("/sounds/coin.wav");
@@ -26,6 +26,9 @@ public class Sound {
         soundURL[6] = getClass().getResource("/sounds/doorlocked.wav");
         soundURL[8] = getClass().getResource("/sounds/cursor.wav");
         soundURL[9] = getClass().getResource("/sounds/receivedamage.wav");
+        soundURL[10] = getClass().getResource("/sounds/gameover.wav");
+
+        soundURL[11] = getClass().getResource("/sounds/drake8bit.wav");
     }
 
     public void setFile(int i){

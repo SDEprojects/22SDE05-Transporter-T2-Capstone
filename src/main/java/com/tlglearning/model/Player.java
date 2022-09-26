@@ -7,13 +7,14 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Player extends EntityB {
 
     GamePanelB gp;
     KeyHandlerB keyH;
-    public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Soda", "Folder", "Truck Key", "Tech Office Key", "Thermos"));
+    public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Soda", "Folder", "Truck Key", "Thermos"));
 
 
     // needed - RADIO HAS BLANK SPOT, CAN FIT 2 MORE - FOLDER, TRUCK KEY, KEY
@@ -29,13 +30,15 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) .08;
+    private float gasDeincrement = (float) .02;
 
     private int playerMoney = 0;
 
+    private double playerTimeMoney;
+    DecimalFormat df = new DecimalFormat("#0.00");
+
     private Set<State> destinations;
 
-    private State currentDestination;
 
     private LinkedList<OBJ_Package> packagesInTrunck;
 
@@ -43,7 +46,8 @@ public class Player extends EntityB {
 
     //    public static int packageCounter = 0;
     public static int packageDelivered = 0;
-    public static String topScores;
+    public static int winSetter = 5;
+    public ArrayList topScores;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -146,6 +150,7 @@ public class Player extends EntityB {
             if (truckFlag) {
                 if (gasCount < 1) {
                     gp.ui.gameLost = true;
+                    gp.playSE(10);
                     double playTime = UI.playTime;
                     GameSaver saver1 = null;
                     try {
@@ -216,8 +221,9 @@ public class Player extends EntityB {
 
         if (i != 999) {
 
-            if (packageDelivered == 2) {
+            if (packageDelivered == winSetter) {
                 gp.ui.gameFinished = true;
+                gp.playSE(5);
                 double playTime = UI.playTime;
                 GameSaver saver = null;
                 try {
@@ -227,8 +233,9 @@ public class Player extends EntityB {
                 }
                 GameRecord record = new GameRecord("Trucker", playTime);
                 saver.addRecord(record);
+
                 saver.saveToJSON();
-                System.out.println(saver.getTopRanks(20));
+                topScores = saver.getTopRanks(3);
 
 
             }
@@ -239,7 +246,7 @@ public class Player extends EntityB {
                     gp.playSE(2);
                     neededItems.remove("Radio");
                     npc1Flag = false;
-                    gp.ui.showMessage("The truck radio is broken, fortunately you find a spare! Play some tunes with the space bar!");
+                    gp.ui.showMessage("The truck radio is broken, fortunately you find a spare! Start your playlist with the space bar!");
                     gp.obj[i] = null;
                     break;
                 /* add key to inventory */
@@ -266,14 +273,14 @@ public class Player extends EntityB {
                     }
                     break;
                 case "Door1":
-                    if (hasTruckKey > 0) {
+                    if (neededItems.size() == 0) {
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasTruckKey--;
                         gp.ui.showMessage("You unlocked the door!");
                     } else {
                         gp.playSE(6);
-                        gp.ui.showMessage("You need the keys to the truck before you go!");
+                        gp.ui.showMessage("You can't leave without the: " + String.valueOf(neededItems).replace("[", "").replace("]", "")+ "!");
 
                     }
                     break;
@@ -284,7 +291,7 @@ public class Player extends EntityB {
                         gp.playSE(4);
                         gp.obj[i] = null;
                         hasTruckKey--;
-                        gp.ui.showMessage("You crank up the truck! Lets roll!");
+                        gp.ui.showMessage("You crank up the truck. The faster we drive, the more cash we make - lets roll!");
 //                        speed = 46;
                         direction = "up";
                     }
@@ -317,7 +324,7 @@ public class Player extends EntityB {
                 case "Desk":
                     if (deskFlag) {
                         gp.playSE(3);
-                        gp.ui.showMessage("You snag your severance package while your boss sleeps at his desk, just in case...");
+                        gp.ui.showMessage("You snag the Folder with your severance package while your boss sleeps at his desk, just in case...");
                         deskFlag = false;
                         neededItems.remove("Folder");
                         break;
@@ -349,7 +356,6 @@ public class Player extends EntityB {
                         gp.playSE(2);
                         hasKey++;
                         /* remove object from game */
-                        neededItems.remove("Tech Office Key");
                         npc1Flag = false;
                         gp.ui.showMessage("HR Coordinator: The radio and GPS in the truck are broken, take this key to the Tech Office to get the spares! ");
                         break;
@@ -366,20 +372,18 @@ public class Player extends EntityB {
                     neededItems.remove("GPS");
                     break;
                 case "GasPump":
-                    float gasByMoney = 100-gasCount;
-                    if (gasCount>90){
+                    float gasByMoney = 100 - gasCount;
+                    if (gasCount > 90) {
                         gp.playSE(8);
                         gp.ui.showMessage("You are already full on gas!");
                         break;
-                    }
-                    else if(playerMoney>=100){
+                    } else if (playerMoney >= 100) {
                         gp.playSE(3);
                         gasCount = 100;
-                        playerMoney-=gasByMoney;
-                        gp.ui.showMessage("You fill up your gas tank! It was $"+gasByMoney+", gas is expensive!");
+                        playerMoney -= gasByMoney;
+                        gp.ui.showMessage("You fill up your gas tank! It was $" + df.format(gasByMoney) + ", gas is expensive!");
                         break;
-                    }
-                    else{
+                    } else {
                         gp.playSE(9);
                         gp.ui.showMessage("You don't have enough money to fill up your gas tank!");
                         break;
@@ -395,6 +399,7 @@ public class Player extends EntityB {
                     OBJ_Package shipping = (OBJ_Package) gp.obj[i];
 
                     if (!pickupPackage(shipping) && !deliverAndPickupPackage(shipping)) {
+
                         gp.playSE(8);
 
                         gp.ui.showMessage("You are current in " + shipping.getState() + ".  You supposed to pick up " + getCurrentDestination());
@@ -527,7 +532,7 @@ public class Player extends EntityB {
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
             gp.ui.showMessage("Nice! We got our first package. Our first destination is " + getCurrentDestination().getName() + ". " + getCurrentDestination().getSaying());
-
+            playerTimeMoney = UI.playTime;
             return true;
         }
         return false;
@@ -541,14 +546,20 @@ public class Player extends EntityB {
         State currentState = pickup.getState();
 
         if (getCurrentDestination().getName().equals(currentState.getName())) {
-            gp.playSE(3);
             removeDestination(getCurrentDestination());
             packagesInTrunck.clear();
             pickup.getPickedUp();
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
             packageDelivered++;
-            playerMoney += 500;
+            if (packageDelivered != winSetter){
+                gp.playSE(3);
+            }
+
+            double money = 500 - (UI.playTime - playerTimeMoney) < 200 ? 200 : 500 - (UI.playTime - playerTimeMoney);
+            playerTimeMoney = UI.playTime;
+            playerMoney += money;
+
 
             gp.ui.showMessage("You drop off the package in " + pickup.getState().getName() + ". Next stop is " + getCurrentDestination() + "!");
             //gp.ui.showMessage("You have delivered package in " +  deliverLocation.getState().getName() + "  !");

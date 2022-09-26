@@ -1,5 +1,6 @@
 package com.tlglearning.controller;
 
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -9,6 +10,7 @@ public class GameRecord implements Comparable<GameRecord>{
 
     private String gameDate;
 
+    DecimalFormat df = new DecimalFormat("#0.00");
 
     public GameRecord(){
         this("", 0);
@@ -29,14 +31,13 @@ public class GameRecord implements Comparable<GameRecord>{
     }
 
 
+
     @Override
     public String toString() {
-        return "GameRecord{" +
-                "playerName='" + playerName + '\'' +
-                ", playTime=" + playDuration +
-                ", gameDate=" + gameDate +
-                '}';
+        return "Date: " + gameDate +
+                " - Play Time: " + df.format(playDuration) + " seconds";
     }
+
 
     public String getPlayerName() {
         return playerName;
@@ -49,4 +50,7 @@ public class GameRecord implements Comparable<GameRecord>{
     public String getGameDate() {
         return gameDate;
     }
+
+
+
 }

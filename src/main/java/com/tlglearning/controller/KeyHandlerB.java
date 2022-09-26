@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 public class KeyHandlerB implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
-    public static boolean spacePressed, enterPressed, hPressed;
+    public static boolean spacePressed, enterPressed, hPressed, mPressed;
 
     int musicChoice = 1;
 
@@ -46,10 +46,12 @@ public class KeyHandlerB implements KeyListener {
                 if (!spacePressed) {
                     spacePressed = true;
 
-                    if (musicChoice % 2 == 1) {
+                    if (musicChoice % 3 == 1) {
                         music.setFile(0);
-                    } else {
+                    } else if (musicChoice % 3 == 2) {
                         music.setFile(1);
+                    } else {
+                        music.setFile(11);
                     }
                     music.play();
                     music.loop();
@@ -65,13 +67,13 @@ public class KeyHandlerB implements KeyListener {
         if(code == KeyEvent.VK_ENTER){
             enterPressed = true;
         }
-        if(code == KeyEvent.VK_H){
-            if (!hPressed) {
-                hPressed = true;
-            }
-            else {
-                hPressed = false;
-            }
+        if(code == KeyEvent.VK_H) {
+            hPressed = !hPressed;
+            mPressed = false;
+        }
+        if(code == KeyEvent.VK_M){
+            mPressed = !mPressed;
+            hPressed = false;
         }
     }
 

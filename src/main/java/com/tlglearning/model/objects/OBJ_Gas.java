@@ -37,14 +37,17 @@ public class OBJ_Gas extends SuperObject {
         else if(g>=44 && g<56){
             gasImage = "/objects/allgas/gas4.png";
         }
-        else if(g>=28 && g<44){
+        else if(g>=30 && g<44){
             gasImage = "/objects/allgas/gas3.png";
         }
-        else if(g>=14 && g<28){
+        else if(g>=19 && g<30){
             gasImage = "/objects/allgas/gas2.png";
         }
-        else if(g>=1 && g<14){
+        else if(g>=10 && g<19){
             gasImage = "/objects/allgas/gas1.png";
+        }
+        else if(g>=1 && g<10){
+            gasImage = "/objects/allgas/gasnearempty.png";
         }
         else {
                 gasImage = "/objects/allgas/gas0.png";

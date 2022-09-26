@@ -110,10 +110,13 @@ public class GamePanelB extends JPanel implements Runnable {
 
         /* Draw the UI,have multiple for play inventory in office vs driving etc.. */
 //        if (player.worldY<2000) {
-        ui.draw(g2);
+        try {
 
-//        }
-//        ui.draw(g2);
+            ui.draw(g2);
+        }
+        catch (Exception ignore) {
+        }
+
 
 
         g2.dispose();
