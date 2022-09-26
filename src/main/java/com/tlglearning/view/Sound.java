@@ -50,7 +50,7 @@ public class Sound {
         clip.start();
 //        FloatControl gainControl =
 //                (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-//        gainControl.setValue(-45.0f);
+//        gainControl.setValue(+45.0f);
         clip.start();
 
     }

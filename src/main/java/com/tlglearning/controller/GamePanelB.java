@@ -39,7 +39,7 @@ public class GamePanelB extends JPanel implements Runnable {
     Thread gameThread;
 
 
-    public SuperObject obj[] = new SuperObject[35];
+    public SuperObject obj[] = new SuperObject[55];
 
 
     public GamePanelB() {
@@ -143,7 +143,7 @@ public class GamePanelB extends JPanel implements Runnable {
                     soundEffectFlag = false;
                     sound.setFile(i);
                     sound.play();
-                    sleep(1300);
+                    sleep(1100);
                     soundEffectFlag = true;
                 }
 

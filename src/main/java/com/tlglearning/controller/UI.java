@@ -12,6 +12,7 @@ public class UI {
 
     GamePanelB gp;
     Font arial_20;
+    Font arial_30;
     Font introFont;
     Font loseFont;
     Font arial_80B;
@@ -55,6 +56,7 @@ public class UI {
         this.player = player;
         this.gp = gp;
         arial_20 = new Font("Arial", Font.PLAIN, 20);
+        arial_30 = new Font("Arial", Font.BOLD, 23);
         introFont = new Font("DialogInput", Font.ITALIC, 60);
         loseFont = new Font("DialogInput", Font.ITALIC, 45);
         arial_80B = new Font("Arial", Font.BOLD, 80);
@@ -108,7 +110,7 @@ public class UI {
                     messageFlag = false;
                     messageList.add(text);
                     try {
-                        Thread.sleep(1300);
+                        Thread.sleep(1100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -204,14 +206,14 @@ public class UI {
             text = "Your total time was " + df.format(playTime) + " seconds. Play again to beat your time!!";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
-            y = gp.screenHeight / 2 - (gp.tileSize);
+            y = gp.screenHeight / 2 - (gp.tileSize)-40;
             g2.drawString(text, x, y);
 
             text = "High Scores:";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
 
-            g2.drawString(text, x, y+60);
+            g2.drawString(text, x, y-370);
 
 
 
@@ -221,7 +223,7 @@ public class UI {
             for (int i = 0; i < finalScores.size(); i++) {
                 int scoresLength = (int) g2.getFontMetrics().getStringBounds(String.valueOf(finalScores.get(i).toString()), g2).getWidth();
                 x = gp.screenWidth / 2 - scoresLength / 2;
-                g2.drawString(String.valueOf(finalScores.get(i).toString()), x, loopY + 100);
+                g2.drawString(String.valueOf(finalScores.get(i).toString()), x, loopY+50 );
                 loopY += 50;
 
             }
@@ -251,49 +253,103 @@ public class UI {
 
             if (!KeyHandlerB.enterPressed) {
 
-                String text;
                 int textLength;
                 int x;
-                int y;
+                int y = gp.screenHeight / 2 - (gp.tileSize*4);;
                 int textLength1;
                 int x1;
-                int y1;
+                int y1 = gp.screenHeight / 2 + (gp.tileSize * 4);
                 int textLength2;
                 int x2;
-                int y2;
+                int y2 = gp.screenHeight / 2 + (gp.tileSize * 5);
                 int textLength3;
                 int x3;
-                int y3;
+                int y3 = gp.screenHeight / 2 - (gp.tileSize * 4);
 
-                text = "Welcome to Transporter!";
+                int textLength4;
+                int x4;
+                int y4= gp.screenHeight / 2 - (gp.tileSize * 3);
+                int textLength5;
+                int x5;
+                int y5= gp.screenHeight / 2 - (gp.tileSize * 2);
+                int textLength6;
+                int x6;
+                int y6 = gp.screenHeight / 2 - (gp.tileSize);
+                int textLength7;
+                int x7;
+                int y7 =gp.screenHeight / 2;
+                int textLength8;
+                int x8;
+                int y8=gp.screenHeight / 2 + (gp.tileSize);
+                int textLength9;
+                int x9;
+                int y9 = gp.screenHeight / 2 + (gp.tileSize * 2);
+                int textLength10;
+                int x10;
+                int y10 = gp.screenHeight / 2 + (gp.tileSize * 3);
+
+                String text = "Welcome to Transporter!";
                 String text1 = "Press h at any point in the game to see the help menu.";
-                String text2 = "Press Enter when you are ready to get started!";
+                String text2 = "Press Enter to start!";
                 String text3 = "TRANSPORTER!";
+                String text4 = "This is a story of Jimbo, a Truck Driver who works really hard to feed his family.";
+                String text5 = "Jimbo needs your help to get on the road and make his deliveries.";
+                String text6 = "Your goal is to pickup the payloads from specific location and deliver it to the destinations.";
+                String text7 = "Before you hit the road, you need to collect all of the items from your office.";
+                String text8 = "Make your deliveries faster to earn more cash!";
+                String text9 = "Make all of your deliveries to win the game - but don't run out of gas, or you'll be fired!";
+                String text10 = "Time is tracked and is recorded at the end of the game, good luck!";
                 textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
                 textLength1 = (int) g2.getFontMetrics().getStringBounds(text1, g2).getWidth();
                 textLength2 = (int) g2.getFontMetrics().getStringBounds(text2, g2).getWidth();
                 textLength3 = (int) g2.getFontMetrics().getStringBounds(text3, g2).getWidth();
+                textLength4 = (int) g2.getFontMetrics().getStringBounds(text4, g2).getWidth();
+                textLength5 = (int) g2.getFontMetrics().getStringBounds(text5, g2).getWidth();
+                textLength6 = (int) g2.getFontMetrics().getStringBounds(text6, g2).getWidth();
+                textLength7 = (int) g2.getFontMetrics().getStringBounds(text7, g2).getWidth();
+                textLength8 = (int) g2.getFontMetrics().getStringBounds(text8, g2).getWidth();
+                textLength9 = (int) g2.getFontMetrics().getStringBounds(text9, g2).getWidth();
+                textLength10 = (int) g2.getFontMetrics().getStringBounds(text10, g2).getWidth();
                 x = gp.screenWidth / 2 - textLength / 2;
-                y = gp.screenHeight / 2 - (gp.tileSize * 3);
+
 
                 x1 = gp.screenWidth / 2 - textLength1 / 2;
-                y1 = gp.screenHeight / 2 - (gp.tileSize * 3);
-
                 x2 = gp.screenWidth / 2 - textLength2 / 2;
-                y2 = gp.screenHeight / 2 - (gp.tileSize * 3);
-
                 x3 = gp.screenWidth / 2 - textLength3 / 2;
-                y3 = gp.screenHeight / 2 - (gp.tileSize * 3);
+                x4 = gp.screenWidth / 2 - textLength4 / 2;
+                x5 = gp.screenWidth / 2 - textLength5 / 2;
+                x6 = gp.screenWidth / 2 - textLength6 / 2;
+                x7 = gp.screenWidth / 2 - textLength7 / 2;
+                x8 = gp.screenWidth / 2 - textLength8 / 2;
+                x9 = gp.screenWidth / 2 - textLength9 / 2;
+                x10 = gp.screenWidth / 2 - textLength10 / 2;
+
 
                 g2.drawImage(introImage, 0, gp.tileSize - 50, gp.screenWidth, gp.screenHeight + 30, null);
 
                 g2.setColor(Color.BLACK);
-                g2.drawString(text, x, y + 10);
-                g2.drawString(text1, x1, y1 + 90);
-                g2.drawString(text2, x2, y2 + 160);
+                g2.drawString(text4, x4, y4);
+                g2.drawString(text5, x5, y5-20);
+                g2.drawString(text6, x6, y6-40);
+                g2.drawString(text7, x7, y7-60);
+                g2.drawString(text8, x8, y8-80);
+                g2.drawString(text9, x9, y9-100);
+                g2.drawString(text10, x10, y10-120);
+
+                g2.drawString(text, x, y+10);
+
+                g2.setFont(arial_30);
+                g2.setColor(Color.YELLOW);
+                g2.drawString(text1, x1-90, y1-90);
+                g2.setColor(Color.RED);
+                g2.drawString(text2, x2-20, y2-100);
+
+
+
                 g2.setFont(introFont);
                 g2.setColor(Color.RED);
-                g2.drawString(text3, x3 - 160, y3 - 40);
+                g2.drawString(text3, x3 - 160, y3 - 20);
+
 
 
             }
@@ -400,7 +456,7 @@ public class UI {
                     g2.drawString("" + Player.packageDelivered, 460, gp.tileSize * 11 + 20);
 
 
-                    g2.drawString("Cash: $" + player.getPlayerMoney(), 500, gp.tileSize * 11 + 20);
+                    g2.drawString("Cash: $" + df.format(player.getPlayerMoney()), 485, gp.tileSize * 11 + 20);
 
                     g2.drawImage(gasImage, 640, gp.tileSize * 10, gp.tileSize + 80, gp.tileSize + 60, null);
                 }
@@ -439,11 +495,11 @@ public class UI {
 
 
                     g2.setColor(Color.BLACK);
-                    g2.setFont(g2.getFont().deriveFont(15f));
-                    g2.drawString(message, gp.tileSize / 2, gp.tileSize * 11 - 20);
+                    g2.setFont(g2.getFont().deriveFont(13f));
+                    g2.drawString(message, gp.tileSize / 2-20, gp.tileSize * 11 - 20);
 
                     messageCounter++;
-                    if (messageCounter > 180) {
+                    if (messageCounter > 150) {
                         messageCounter = 0;
                         messageOn = false;
                     }
@@ -465,3 +521,14 @@ public class UI {
 // draw a simple grey bar at the bottom of the screen
 //                    g2.setColor(Color.GRAY);
 //                    g2.fillRect(0, gp.tileSize * 10, gp.screenWidth, gp.screenHeight / 3);
+
+
+//STORY: This is a story of Jimbo, a Truck Driver who works really hard to feed his family. Jimbo needs your help to get on the road and make his deliveries
+//
+//        OBJECTIVE: Your goal is to pickup the payloads from specific location and deliver it to the destinations.
+//        Before you head out for hitting the road, you need to collect certain require item else you won't be able to drive.
+//
+//        HOW TO PLAY: Before you can get on the road, you need to go room by room at your office to collect the items.
+//        Once you have all of your items your can start driving state to state to make your pickups and deliveries
+//
+//        HOW TO WIN: You need to make all of your deliveries to win the game.

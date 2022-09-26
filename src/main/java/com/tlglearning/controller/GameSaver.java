@@ -37,7 +37,7 @@ public class GameSaver {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try {
             mapper.writeValue(
-                    new FileOutputStream("records.json"), gameRecords);
+                    new FileOutputStream("src/main/resources/records.json"), gameRecords);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

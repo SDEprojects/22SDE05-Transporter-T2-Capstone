@@ -30,9 +30,9 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) .02;
+    private float gasDeincrement = (float) .05;
 
-    private int playerMoney = 0;
+    private double playerMoney = 0;
 
     private double playerTimeMoney;
     DecimalFormat df = new DecimalFormat("#0.00");
@@ -46,7 +46,7 @@ public class Player extends EntityB {
 
     //    public static int packageCounter = 0;
     public static int packageDelivered = 0;
-    public static int winSetter = 5;
+    public static int winSetter = 3;
     public ArrayList topScores;
 
 
@@ -77,6 +77,13 @@ public class Player extends EntityB {
         destinations.add(State.OH);
         destinations.add(State.SC);
         destinations.add(State.TN);
+        destinations.add(State.AL);
+        destinations.add(State.MD);
+        destinations.add(State.WV);
+        destinations.add(State.GA);
+        destinations.add(State.IN);
+        destinations.add(State.VA);
+        destinations.add(State.NC);
         //destinations.add(State.MS);
     }
 
@@ -164,9 +171,9 @@ public class Player extends EntityB {
                     topScores = saver1.getTopRanks(3);
                 }
                 if (gasCount < 1) {
-                    speed = 6;
+                    speed = 5;
                 } else if (onRoadOn && gasCount >= 1) {
-                    speed = 35;
+                    speed = 30;
                 } else if (!onRoadOn && gasCount >= 1) {
                     speed = 10;
                 }
@@ -280,7 +287,7 @@ public class Player extends EntityB {
                         gp.ui.showMessage("You unlocked the door!");
                     } else {
                         gp.playSE(6);
-                        gp.ui.showMessage("You can't leave without the: " + String.valueOf(neededItems).replace("[", "").replace("]", "")+ "!");
+                        gp.ui.showMessage("You can't leave without the: " + String.valueOf(neededItems).replace("[", "").replace("]", "") + "!");
 
                     }
                     break;
@@ -373,7 +380,7 @@ public class Player extends EntityB {
                     break;
                 case "GasPump":
                     float gasByMoney = 100 - gasCount;
-                    if (gasCount > 90) {
+                    if (gasCount > 94) {
                         gp.playSE(8);
                         gp.ui.showMessage("You are already full on gas!");
                         break;
@@ -402,7 +409,7 @@ public class Player extends EntityB {
 
                         gp.playSE(8);
 
-                        gp.ui.showMessage("You are current in " + shipping.getState() + ".  You supposed to pick up " + getCurrentDestination());
+                        gp.ui.showMessage("You are currently in " + shipping.getState() + ". You need to go to " + getCurrentDestination() + ".");
 
                     }
 
@@ -531,7 +538,7 @@ public class Player extends EntityB {
             //removeDestination(currentState);
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
-            gp.ui.showMessage("Nice! We got our first package. Our first destination is " + getCurrentDestination().getName() + ". " + getCurrentDestination().getSaying());
+            gp.ui.showMessage("You got the first package. First stop is " + getCurrentDestination().getName() + ". " + getCurrentDestination().getSaying());
             playerTimeMoney = UI.playTime;
             return true;
         }
@@ -552,7 +559,7 @@ public class Player extends EntityB {
             pickup.setDestination(getNextDestination());
             packagesInTrunck.add(pickup);
             packageDelivered++;
-            if (packageDelivered != winSetter){
+            if (packageDelivered != winSetter) {
                 gp.playSE(3);
             }
 
@@ -561,7 +568,7 @@ public class Player extends EntityB {
             playerMoney += money;
 
 
-            gp.ui.showMessage("You drop off the package in " + pickup.getState().getName() + ". Next stop is " + getCurrentDestination() + "!");
+            gp.ui.showMessage("You drop off in " + pickup.getState().getName() + ". You made: $" + df.format(money) + ". Next stop is " + getCurrentDestination() + "! " + getCurrentDestination().getSaying());
             //gp.ui.showMessage("You have delivered package in " +  deliverLocation.getState().getName() + "  !");
             return true;
         }
@@ -578,7 +585,7 @@ public class Player extends EntityB {
         return destinations.remove(state);
     }
 
-    public int getPlayerMoney() {
+    public double getPlayerMoney() {
         return playerMoney;
     }
 }
