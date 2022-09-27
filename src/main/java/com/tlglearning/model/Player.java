@@ -30,7 +30,7 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) .05;
+    private float gasDeincrement = (float) .04;
 
     private double playerMoney = 0;
 
@@ -173,11 +173,12 @@ public class Player extends EntityB {
                 if (gasCount < 1) {
                     speed = 5;
                 } else if (onRoadOn && gasCount >= 1) {
-                    speed = 30;
+                    speed = 26;
                 } else if (!onRoadOn && gasCount >= 1) {
-                    speed = 10;
+                    speed = 7;
                 }
             }
+            // best playable speeds are 26 on road, 7 off road
 
 
             /* Check Obj Collision */

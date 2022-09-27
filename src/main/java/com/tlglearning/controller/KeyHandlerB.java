@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 public class KeyHandlerB implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
-    public static boolean spacePressed, enterPressed, hPressed, mPressed;
+    public static boolean spacePressed, enterPressed, hPressed, mPressed, vPressed, cPressed;
 
     int musicChoice = 1;
 
@@ -23,55 +23,79 @@ public class KeyHandlerB implements KeyListener {
     }
 
 
-
-
     @Override
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
 
-        if(code == KeyEvent.VK_UP){
+        if (code == KeyEvent.VK_UP) {
             upPressed = true;
         }
-        if(code == KeyEvent.VK_DOWN){
+        if (code == KeyEvent.VK_DOWN) {
             downPressed = true;
         }
-        if(code == KeyEvent.VK_LEFT){
+        if (code == KeyEvent.VK_LEFT) {
             leftPressed = true;
         }
-        if(code == KeyEvent.VK_RIGHT){
+        if (code == KeyEvent.VK_RIGHT) {
             rightPressed = true;
         }
-        if(code == KeyEvent.VK_SPACE) {
+        if (code == KeyEvent.VK_SPACE) {
             if (!Player.neededItems.contains("Radio")) {
                 if (!spacePressed) {
                     spacePressed = true;
 
-                    if (musicChoice % 3 == 1) {
-                        music.setFile(0);
-                    } else if (musicChoice % 3 == 2) {
-                        music.setFile(1);
-                    } else {
-                        music.setFile(11);
+                    if (!music.isPlaying){
+                        if (musicChoice % 3 == 1) {
+                            music.setMainFile(0);
+                        } else if (musicChoice % 3 == 2) {
+                            music.setMainFile(1);
+                        } else {
+                            music.setMainFile(2);
+                        }
+                        music.playMain();
+                        music.loopMain();
+                        musicChoice++;
                     }
-                    music.play();
-                    music.loop();
-                    musicChoice++;
-
 
                 } else {
                     spacePressed = false;
-                    music.stop();
+                    music.stopMain();
                 }
             }
         }
-        if(code == KeyEvent.VK_ENTER){
+
+        if (code == KeyEvent.VK_V) {
+            final float volume = music.getVolume();
+            if (volume < 0.90f) {
+                music.setVolume(volume + 0.10f);
+            }
+            else {
+                music.setVolume(1.0f);
+            }
+
+
+        }
+
+        if (code == KeyEvent.VK_C) {
+            final float volume = music.getVolume();
+
+            if (volume > 0.10f) {
+                music.setVolume(volume - 0.10f);
+            }
+            else {
+                music.setVolume(0.0f);
+            }
+
+
+        }
+        if (code == KeyEvent.VK_ENTER) {
             enterPressed = true;
         }
-        if(code == KeyEvent.VK_H) {
+        if (code == KeyEvent.VK_H) {
             hPressed = !hPressed;
             mPressed = false;
         }
-        if(code == KeyEvent.VK_M){
+        if (code == KeyEvent.VK_M) {
             mPressed = !mPressed;
             hPressed = false;
         }
@@ -81,16 +105,16 @@ public class KeyHandlerB implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
 
-        if(code == KeyEvent.VK_UP){
+        if (code == KeyEvent.VK_UP) {
             upPressed = false;
         }
-        if(code == KeyEvent.VK_DOWN){
+        if (code == KeyEvent.VK_DOWN) {
             downPressed = false;
         }
-        if(code == KeyEvent.VK_LEFT){
+        if (code == KeyEvent.VK_LEFT) {
             leftPressed = false;
         }
-        if(code == KeyEvent.VK_RIGHT){
+        if (code == KeyEvent.VK_RIGHT) {
             rightPressed = false;
         }
     }

@@ -212,8 +212,8 @@ public class UI {
             text = "High Scores:";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
-
-            g2.drawString(text, x, y-370);
+            y = y+80;
+            g2.drawString(text, x, y);
 
 
 
@@ -398,11 +398,11 @@ public class UI {
                 String text3 = "- If you run out of gas, you lose!";
                 String text4 = "Your time is being recorded, hurry!  " + df.format(playTime);
                 String text5 = "- Once acquired, press the space bar to start your radio.";
-                String text6 = "- Press h to open/close the help menu.";
+                String text10 = "- Press v to increase volume, and c to decrease volume.";
                 String text7 = "Objective:";
                 String text8 = "Controls: ";
                 String text9 = "- up, down, left, right arrow keys to move.";
-                String text10 = "- Press m to open/close the message window.";
+                String text6 = "- Press m to open/close the message window.";
 
                 textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
                 x = gp.screenWidth / 2 - textLength / 2;
@@ -510,25 +510,4 @@ public class UI {
     }
 
 
-    public void sleep(int time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
-// draw a simple grey bar at the bottom of the screen
-//                    g2.setColor(Color.GRAY);
-//                    g2.fillRect(0, gp.tileSize * 10, gp.screenWidth, gp.screenHeight / 3);
-
-
-//STORY: This is a story of Jimbo, a Truck Driver who works really hard to feed his family. Jimbo needs your help to get on the road and make his deliveries
-//
-//        OBJECTIVE: Your goal is to pickup the payloads from specific location and deliver it to the destinations.
-//        Before you head out for hitting the road, you need to collect certain require item else you won't be able to drive.
-//
-//        HOW TO PLAY: Before you can get on the road, you need to go room by room at your office to collect the items.
-//        Once you have all of your items your can start driving state to state to make your pickups and deliveries
-//
-//        HOW TO WIN: You need to make all of your deliveries to win the game.

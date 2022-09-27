@@ -145,6 +145,7 @@ public class GamePanelB extends JPanel implements Runnable {
                     sound.play();
                     sleep(1100);
                     soundEffectFlag = true;
+
                 }
 
             }

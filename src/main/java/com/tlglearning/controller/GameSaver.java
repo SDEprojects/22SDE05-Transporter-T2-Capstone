@@ -1,9 +1,12 @@
 package com.tlglearning.controller;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.FileOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -15,9 +18,15 @@ public class GameSaver {
     private LinkedList<GameRecord> gameRecords;
 
     private GameSaver() throws IOException {
-        TypeReference<LinkedList<GameRecord>> typeRef = new TypeReference<>() {};
+        TypeReference<LinkedList<GameRecord>> typeRef = new TypeReference<>() {
+        };
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        InputStream actions = classLoader.getResourceAsStream("records.json");
+        InputStream actions = null;
+        try {
+            actions = new FileInputStream("records.json");
+        } catch (IOException ignore) {
+
+        }
         gameRecords = new ObjectMapper().readValue(actions, typeRef);
     }
 
@@ -33,16 +42,21 @@ public class GameSaver {
     }
 
     public void saveToJSON() {
-        ObjectMapper mapper = new ObjectMapper();
-        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        JsonFactory jsonFactory = new JsonFactory();
+        jsonFactory.configure(JsonGenerator.Feature.AUTO_CLOSE_TARGET, false);
+        ObjectMapper mapper = new ObjectMapper(jsonFactory);
+//        ObjectMapper mapper = new ObjectMapper();
+//        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         try {
             mapper.writeValue(
-                    new FileOutputStream("src/main/resources/records.json"), gameRecords);
+                    new File("records.json"), gameRecords);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
+//    mapper.writeValue(
+//            new FileOutputStream("src/main/resources/records.json"), gameRecords);
 
 //    public String getTopRanks(int top){
 //
