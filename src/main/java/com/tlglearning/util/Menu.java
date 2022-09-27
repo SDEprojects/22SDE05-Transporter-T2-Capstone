@@ -1,48 +1,72 @@
 package com.tlglearning.util;
 
+import com.tlglearning.communication.CommunicationManager;
+
 import java.util.*;
 
 public class Menu {
     //method to display the help menu to the user
     private static final GamePrompt prompt = new GamePrompt();
+    private static CommunicationManager coms = CommunicationManager.getInstance();
     static final ArrayList<String> inOffice = new ArrayList<>(
             Arrays.asList("truck", "warehouse", "boss office", "tech room", "gas station", "front office", "break room", "hr office"));
 
     public static void helpMenu(Scanner read, Location location, Inventory inventory, ScenarioGenerator scenario){
         if (inOffice.contains(location.getLocationName())) {
+            String output = "(\nWhat do you need help with today?\\n\" +\n" +
+                    "                    \"'1' - for a list of available commands.\\n\" +\n" +
+                    "                    \"'2' - to see items in your inventory.\\n\" +\n" +
+                    "                    \"'3' - to see your current location, available exits, and a map of the office.\\n\" +\n" +
+                    "                    \"'4' - to see items needed to get on the road.\\n >>>)";
+            coms.communicateToApp(output);
+
             System.out.println("\nWhat do you need help with today?\n" +
                     "'1' - for a list of available commands.\n" +
                     "'2' - to see items in your inventory.\n" +
                     "'3' - to see your current location, available exits, and a map of the office.\n" +
                     "'4' - to see items needed to get on the road.\n >>>");
-            int input = Integer.parseInt(read.next());
+            //int input = Integer.parseInt(read.next());
+
+
+
+            int input = menuValidator();
+            System.out.println("you put in sfsdf");
+
             switch (input) {
                 case 1:
                     System.out.println(availableCMD(location));
+                    coms.communicateToApp(availableCMD(location));
                     break;
                 case 2:
                     System.out.println("\nYour backpack has the following items: \n" + showBackpack(inventory) + "\n");
+                    String str2 = new String("\nYour backpack has the following items: \n" + showBackpack(inventory) + "\n");
+                    coms.communicateToApp(str2);
                     break;
                 case 3:
                     System.out.println(locationData(location));
+                    coms.communicateToApp(locationData(location));
                     break;
                 case 4:
                     System.out.println(showScenarioDetails(scenario, location));
+                    coms.communicateToApp(showScenarioDetails(scenario, location));
                     break;
                 default:
                     prompt.runPromptRed("error");
+                    coms.communicateToApp("Error: bad input");
             }
         } else {
             System.out.println("\nWhat do you need help with today?\n" +
                     "'1' - for a list of available commands.\n" +
                     "'2' - to see route plan.\n >>>");
-            int input = Integer.parseInt(read.next());
+            int input = menuValidator();
             switch (input) {
                 case 1:
                     System.out.println(availableCMD(location));
+                    coms.communicateToApp(availableCMD(location));
                     break;
                 case 2:
                     System.out.println(showScenarioDetails(scenario, location));
+                    coms.communicateToApp(showScenarioDetails(scenario, location));
                     break;
                 default:
                     prompt.runPromptRed("error");
@@ -94,6 +118,7 @@ public class Menu {
     //shows details of the randomly generated scenario so the user knows where their start/pickup/delivery locations are
     private static String showScenarioDetails(ScenarioGenerator scenario,Location location) {
         if (inOffice.contains(location.getLocationName())) {
+
             return "***********************Game Details***********************\n" +
                     "Items needed to get on the road:\n" + scenario.getItemsNeeded() + "\n" +
                     "**********************************************************";
@@ -109,5 +134,25 @@ public class Menu {
                     "**********************************************************";
         }
     }
+
+    private static int menuValidator(){
+        boolean loop = true;
+        int choice = 1;
+        while (loop){
+            try {
+                coms.communicateToApp("You must enter a numberic value\n");
+                System.out.println("you entered something wrong!");
+                choice = Integer.parseInt(coms.getCommand());
+
+            }catch(NumberFormatException e){
+                continue;
+            }
+            loop = false;
+            return choice;
+        }
+
+        return -1;
+    }
+
 }
 

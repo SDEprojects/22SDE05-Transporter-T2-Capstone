@@ -1,6 +1,7 @@
 package com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tlglearning.communication.CommunicationManager;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,7 @@ public class Actions {
     boolean cLoadDelivered = false;
     boolean dLoadDelivered = false;
     boolean needGas = false;
-
+    private CommunicationManager coms = CommunicationManager.getInstance();
     GamePrompt prompt = new GamePrompt();
     InputHandling gameStart = new InputHandling();
 
@@ -42,17 +43,22 @@ public class Actions {
     //uses current location and user input along with JsonNode obj to move player from one room to another
     public void move(String current, String nextLocation, Location currentLocation) {
         String newLocation = InputHandling.locationFinder(current, nextLocation, moveLocation);
-        if (newLocation == null || newLocation.equals("null")) {
+        System.out.println(newLocation);
+        coms.communicateToApp(newLocation);
+        if (newLocation.equals("leads to nowhere") || newLocation.equals("null")) {
             prompt.runPromptRed("invalidLocation");
         } else if (newLocation.equals("warehouse")) {
             updateLocationDetails(currentLocation, newLocation, moveLocation);
             System.out.println(InputHandling.getDescription(newLocation, "description", moveLocation));
+            coms.communicateToApp(InputHandling.getDescription(newLocation, "description", moveLocation));
+
             prompt.runPrompt("manager approach");
             prompt.runPrompt("manager conv");
 
         } else {
             updateLocationDetails(currentLocation, newLocation, moveLocation);
             System.out.println(InputHandling.getDescription(newLocation, "description", moveLocation));
+            coms.communicateToApp(InputHandling.getDescription(newLocation, "description", moveLocation));
         }
     }
     //uses current location and user input to explore a location within a room, also checks for locked locations
@@ -66,11 +72,13 @@ public class Actions {
                 boolean hasKey = backpack.getBackpack().contains("key");
                 if (hasKey) {
                     System.out.println(newExploreLocation);
+                    coms.communicateToApp(newExploreLocation);
                 } else {
                     prompt.runPromptRed("keyNeeded");
                 }
             } else {
                 System.out.println(newExploreLocation);
+                coms.communicateToApp(newExploreLocation);
             }
         }
     }
@@ -81,17 +89,23 @@ public class Actions {
             prompt.runPromptRed("invalidItem");
         }
         if (item != null) {
+            boolean hasItem = backpack.getBackpack().contains(item);
+
             if (item.equals("coffee")) {
                 boolean hasKey = backpack.getBackpack().contains("thermos");
-                if (hasKey) {
+                if (hasKey && !hasItem) {
                     System.out.println(newItem);
+                    coms.communicateToApp("you just picked up " + newItem);
                     backpack.addItem(item);
                 } else {
                     prompt.runPromptRed("thermosNeeded");
                 }
             } else {
-                System.out.println(newItem);
-                backpack.addItem(item);
+                if (!hasItem) {
+                    System.out.println(newItem);
+                    coms.communicateToApp("you just picked up " + newItem);
+                    backpack.addItem(item);
+                }
             }//do nothing
         }
     }

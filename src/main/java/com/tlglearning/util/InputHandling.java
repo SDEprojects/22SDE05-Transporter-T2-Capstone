@@ -1,6 +1,7 @@
 package com.tlglearning.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tlglearning.communication.CommunicationManager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import static com.tlglearning.util.SaveGame.save;
 public class InputHandling {
     private static GamePrompt prompt = new GamePrompt();
     private static JsonNode commandInput;
+    private CommunicationManager coms = CommunicationManager.getInstance();
 
     //ctor to read in and parse JSON file into a JsonNode obj to be used by the other methods
     public InputHandling() {
@@ -35,17 +37,31 @@ public class InputHandling {
     public void gameStart() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         prompt.runPromptCyan("start");
-        String input = in.readLine().toLowerCase();
+        //String input = in.readLine().toLowerCase();
+        String input = coms.getCommand();
         //switch case to get user input and perform the necessary commands
         switch (input) {
             case "q":
                 prompt.runPromptCyan("quit");
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 System.exit(0);
                 break;
             case "n":
-                System.out.println("Would you like to load your saved data? Type 'y' ");
-                BufferedReader loadIn = new BufferedReader(new InputStreamReader(System.in));
-                String loadInput = loadIn.readLine().toLowerCase();
+                coms.communicateToApp("Please wait while game is loading...");
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+              //  System.out.println("Would you like to load your saved data? Type 'y' ");
+                //BufferedReader loadIn = new BufferedReader(new InputStreamReader(System.in));
+                //String loadInput = loadIn.readLine().toLowerCase();
+                String loadInput = "";
+
                 if (loadInput.equals("y")) {
                     prompt.runPromptCyan("newGameHelp");
                     prompt.runPromptCyan("newGameCommands");

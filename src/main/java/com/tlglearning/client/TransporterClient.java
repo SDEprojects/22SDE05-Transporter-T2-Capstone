@@ -1,3 +1,4 @@
+package com.tlglearning.client;/*
 package com.tlglearning.client;
 
 import com.tlglearning.util.InputHandling;
@@ -18,3 +19,5 @@ public class TransporterClient {
         gameStart.gameStart();
     }
 }
+
+*/
