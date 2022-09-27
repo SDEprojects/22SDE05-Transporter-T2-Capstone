@@ -1,3 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: com.tlglearning.app.AppLauncher
-
+Main-Class: com.tlglearning.controller.MainB

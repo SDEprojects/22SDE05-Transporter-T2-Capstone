@@ -3,7 +3,10 @@ package com.tlglearning.util;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.tlglearning.communication.CommunicationManager;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
