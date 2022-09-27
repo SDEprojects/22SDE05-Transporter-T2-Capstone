@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-/* launch game */
+/* launches game */
 public class AppLauncher {
 
     public static void main(String[] args) throws IOException {

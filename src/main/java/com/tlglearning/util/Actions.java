@@ -39,6 +39,7 @@ public class Actions {
             throw new RuntimeException(e);
         }
     }
+
     //uses current location and user input along with JsonNode obj to move player from one room to another
     public void move(String current, String nextLocation, Location currentLocation) {
         String newLocation = InputHandling.locationFinder(current, nextLocation, moveLocation);

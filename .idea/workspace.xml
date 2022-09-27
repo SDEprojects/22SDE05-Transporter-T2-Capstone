@@ -4,40 +4,127 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="" />
+    <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/fasterxml_jackson_core.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/22SDE05-Transporter-T2-Capstone.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/capstone.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.2.3-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.2.3-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-annotations-2.2.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-core-2.2.3-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-core-2.2.3-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-core-2.2.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-databind-2.2.3-javadoc.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-databind-2.2.3-sources.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/jackson-databind-2.2.3.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/app/AppLauncher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/app/GameFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/app/GamePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/communication/CommunicationManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GamePanel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/communication/CommunicationManager.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Actions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GamePrompt.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GameState.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/InputHandling.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Inventory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/JacksonParser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/LoadGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Location.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Menu.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/PrettyText.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/SaveGame.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/ScenarioGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/TitleScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/client/TransporterClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GamePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GamePrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/InputHandling.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/InputHandling.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/TitleScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/util/TitleScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/tlglearning/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/records.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/records.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="sprint2_release" />
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "last_opened_file_path": "/Users/henblair/Desktop/rob_branch_capston2",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
-  }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-    </key>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
   </component>
-  <component name="RunManager">
-    <configuration name="TransporterClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.java.com.tlglearning.client.TransporterClient" />
-      <module name="22SDE05-Transporter-T2-Capstone" />
+  <component name="ProjectId" id="2FAuiZCh2MkBgaeb17HiO66Iuzs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;corretto-11&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.36091954&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Application.MainB">
+    <configuration name="AppLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.app.AppLauncher" />
+      <module name="capstone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.java.com.tlglearning.client.*" />
+          <option name="PATTERN" value="com.tlglearning.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.controller.MainB" />
+      <module name="Capstonev2.1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tlglearning.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -47,12 +134,25 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TransporterClient" />
+        <item itemvalue="Application.MainB" />
+        <item itemvalue="Application.AppLauncher" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="" />
+      <created>1663947343370</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1663947343370</updated>
+      <workItem from="1663947344258" duration="435000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -64,17 +164,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/tlglearning/util/PrettyText.java</url>
-          <line>12</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/22SDE05_Transporter_T2_Capstone$TransporterClient.ic" NAME="TransporterClient Coverage Results" MODIFIED="1663273939919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
