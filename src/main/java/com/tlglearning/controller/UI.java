@@ -57,7 +57,7 @@ public class UI {
         this.player = player;
         this.gp = gp;
         arial_20 = new Font("Arial", Font.PLAIN, 20);
-        arial_30 = new Font("Arial", Font.BOLD, 23);
+        arial_30 = new Font("American Typewriter", Font.BOLD, 23);
         introFont = new Font("DialogInput", Font.ITALIC, 60);
         loseFont = new Font("DialogInput", Font.ITALIC, 45);
         arial_80B = new Font("Arial", Font.BOLD, 80);
@@ -334,15 +334,25 @@ public class UI {
                 g2.drawString(text, x, y+10);
 
                 g2.setFont(arial_30);
-                g2.setColor(Color.YELLOW);
-                g2.drawString(text1, x1-90, y1-60);
+                g2.setColor(Color.WHITE);
+                g2.drawString(text1, x1-90, y1-30);
+                g2.drawString("Total Packages to Win: "+Player.winSetter, x1+15, y1-90);
                 g2.setColor(Color.RED);
-                g2.drawString("Press a number to change the total packages to win.", x1-140, y1-120);
-                g2.drawString("Total Packages to Win: "+Player.winSetter, x1-40, y1-80);
+                g2.drawString("Press a number 2-5 to change the # of packages to win.", x1-130, y1-120);
 
-                g2.drawString(text2, x2-20, y2-40);
-
-
+                g2.drawString(text2, x2-20, y2-20);
+                if (KeyHandlerB.twoPressed) {
+                    Player.winSetter = 2;
+                }
+                if (KeyHandlerB.threePressed) {
+                    Player.winSetter = 3;
+                }
+                if (KeyHandlerB.fourPressed) {
+                    Player.winSetter = 4;
+                }
+                if (KeyHandlerB.fivePressed) {
+                    Player.winSetter = 5;
+                }
 
                 g2.setFont(introFont);
                 g2.setColor(Color.RED);

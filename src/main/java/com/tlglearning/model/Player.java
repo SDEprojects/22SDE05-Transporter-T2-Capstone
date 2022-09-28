@@ -28,7 +28,7 @@ public class Player extends EntityB {
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) .055;
+    private float gasDeincrement = (float) .06;
 
     private double playerMoney = 0;
 
@@ -44,7 +44,7 @@ public class Player extends EntityB {
 
     //    public static int packageCounter = 0;
     public static int packageDelivered = 0;
-    public static int winSetter = 1;
+    public static int winSetter = 3;
     public ArrayList topScores;
     private int cashSE = 1;
 
@@ -320,7 +320,7 @@ public class Player extends EntityB {
                     }
                     cashSE++;
                     gp.obj[i] = null;
-                    int randomCash = (int) (Math.random() * 100) + 1;
+                    int randomCash = (int) (Math.random() * 70) + 1;
                     gp.ui.showMessage(randomString + randomCash + "!");
                     playerMoney += randomCash;
                     break;

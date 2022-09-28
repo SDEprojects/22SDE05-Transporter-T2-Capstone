@@ -5,40 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/bluecatcode_junit_4_12_extended.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/22SDE05-Transporter-T2-Capstone.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/records.json" beforeDir="false" afterPath="$PROJECT_DIR$/records.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/AssetSetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/AssetSetter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GamePanelB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GamePanelB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GameRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GameRecord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/KeyHandlerB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/KeyHandlerB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/view/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/view/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/records.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/records.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/AppLauncher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GameFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/app/GamePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/communication/CommunicationManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/communication/CommunicationManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Actions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Actions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GamePrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GamePrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/GameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/InputHandling.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/InputHandling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Inventory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Inventory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/JacksonParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/JacksonParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/LoadGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/LoadGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Location.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Location.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/PrettyText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/PrettyText.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/SaveGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/SaveGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/ScenarioGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/ScenarioGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/tlglearning/util/TitleScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/tlglearning/util/TitleScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/records.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/records.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "corretto-11",
-    "last_opened_file_path": "/Users/henblair/Desktop/My Stuff/SDE Apprenticeship/22SDE05-Transporter-T2-Capstone/src/main/resources/sounds",
+    "last_opened_file_path": "/Users/henblair/Desktop/My Stuff/SDE Apprenticeship/22SDE05-Transporter-T2-Capstone/src/main/resources",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.36091954",
@@ -95,9 +67,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/sounds" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/objects" />
       <recent name="$PROJECT_DIR$/src/main/resources/sounds" />
     </key>
