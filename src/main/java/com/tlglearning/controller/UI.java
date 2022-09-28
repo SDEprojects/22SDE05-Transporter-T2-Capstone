@@ -45,9 +45,10 @@ public class UI {
 
     private ArrayList<String> messageList = new ArrayList<>();
 
-
     DecimalFormat df = new DecimalFormat("#0.00");
 
+    private boolean introScreen = true;
+    private boolean stopIntroMusic = true;
 
     private Player player;
 
@@ -56,7 +57,7 @@ public class UI {
         this.player = player;
         this.gp = gp;
         arial_20 = new Font("Arial", Font.PLAIN, 20);
-        arial_30 = new Font("Arial", Font.BOLD, 23);
+        arial_30 = new Font("American Typewriter", Font.BOLD, 23);
         introFont = new Font("DialogInput", Font.ITALIC, 60);
         loseFont = new Font("DialogInput", Font.ITALIC, 45);
         arial_80B = new Font("Arial", Font.BOLD, 80);
@@ -92,6 +93,8 @@ public class UI {
 
         WinScreen win = new WinScreen();
         winImage = win.image;
+
+
 
     }
 
@@ -203,7 +206,7 @@ public class UI {
 
 
 
-            text = "Your total time was " + df.format(playTime) + " seconds. Play again to beat your time!!";
+            text = "Your total time was " + df.format(playTime) + " seconds, and you earned $" + df.format(player.getPlayerMoney()) + "!!";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
             y = gp.screenHeight / 2 - (gp.tileSize)-40;
@@ -212,7 +215,7 @@ public class UI {
             text = "High Scores:";
             textLength = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
             x = gp.screenWidth / 2 - textLength / 2;
-            y = y+80;
+            y = y+45;
             g2.drawString(text, x, y);
 
 
@@ -223,11 +226,9 @@ public class UI {
             for (int i = 0; i < finalScores.size(); i++) {
                 int scoresLength = (int) g2.getFontMetrics().getStringBounds(String.valueOf(finalScores.get(i).toString()), g2).getWidth();
                 x = gp.screenWidth / 2 - scoresLength / 2;
-                g2.drawString(String.valueOf(finalScores.get(i).toString()), x, loopY+50 );
-                loopY += 50;
-
+                g2.drawString(String.valueOf(finalScores.get(i).toString()), x, loopY+40 );
+                loopY += 40;
             }
-
 
             g2.setFont(loseFont);
             g2.setColor(Color.RED);
@@ -238,20 +239,14 @@ public class UI {
             g2.drawString(text, x, y);
 
 
-
-
-
-
-
-
             gp.gameThread.stop();
 
-
-
-
         } else {
-
             if (!KeyHandlerB.enterPressed) {
+                if (introScreen){
+                    gp.playMusic(19);
+                    introScreen = false;
+                }
 
                 int textLength;
                 int x;
@@ -339,12 +334,25 @@ public class UI {
                 g2.drawString(text, x, y+10);
 
                 g2.setFont(arial_30);
-                g2.setColor(Color.YELLOW);
-                g2.drawString(text1, x1-90, y1-90);
+                g2.setColor(Color.WHITE);
+                g2.drawString(text1, x1-90, y1-30);
+                g2.drawString("Total Packages to Win: "+Player.winSetter, x1+15, y1-90);
                 g2.setColor(Color.RED);
-                g2.drawString(text2, x2-20, y2-100);
+                g2.drawString("Press a number 2-5 to change the # of packages to win.", x1-130, y1-120);
 
-
+                g2.drawString(text2, x2-20, y2-20);
+                if (KeyHandlerB.twoPressed) {
+                    Player.winSetter = 2;
+                }
+                if (KeyHandlerB.threePressed) {
+                    Player.winSetter = 3;
+                }
+                if (KeyHandlerB.fourPressed) {
+                    Player.winSetter = 4;
+                }
+                if (KeyHandlerB.fivePressed) {
+                    Player.winSetter = 5;
+                }
 
                 g2.setFont(introFont);
                 g2.setColor(Color.RED);
@@ -352,6 +360,10 @@ public class UI {
 
 
 
+            }
+            if(KeyHandlerB.enterPressed && stopIntroMusic){
+                gp.stopMusic();
+                stopIntroMusic = false;
             }
             /* message chat window */
             if (KeyHandlerB.mPressed && KeyHandlerB.enterPressed && !KeyHandlerB.hPressed && !gameLost && !gameFinished) {

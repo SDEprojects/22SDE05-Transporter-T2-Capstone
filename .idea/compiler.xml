@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="22SDE05-Transporter-T2-Capstone" />
         <module name="capstone" />
         <module name="Capstonev2.1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
+      <module name="22SDE05-Transporter-T2-Capstone" target="11" />
       <module name="Capstonev2.1" target="11" />
     </bytecodeTargetLevel>
   </component>

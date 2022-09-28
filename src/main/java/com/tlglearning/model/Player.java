@@ -22,15 +22,13 @@ public class Player extends EntityB {
     public final int screenX;
     public final int screenY;
     public int hasKey = 0;
-    public int hasTruckKey = 0;
-
     boolean vendingFlag = true;
     boolean coffeeFlag = true;
     boolean deskFlag = true;
     boolean npc1Flag = true;
     public static boolean truckFlag;
     public static float gasCount = 100;
-    private float gasDeincrement = (float) .04;
+    private float gasDeincrement = (float) .06;
 
     private double playerMoney = 0;
 
@@ -48,6 +46,7 @@ public class Player extends EntityB {
     public static int packageDelivered = 0;
     public static int winSetter = 3;
     public ArrayList topScores;
+    private int cashSE = 1;
 
 
     public Player(GamePanelB gp, KeyHandlerB keyH) {
@@ -157,7 +156,7 @@ public class Player extends EntityB {
             if (truckFlag) {
                 if (gasCount < 1) {
                     gp.ui.gameLost = true;
-                    gp.playSE(10);
+                    gp.playSE(22);
                     double playTime = UI.playTime;
                     GameSaver saver1 = null;
                     try {
@@ -165,7 +164,7 @@ public class Player extends EntityB {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    GameRecord record1 = new GameRecord("Trucker", playTime);
+                    GameRecord record1 = new GameRecord("Trucker", playTime, playerMoney);
                     saver1.addRecord(record1);
 
                     topScores = saver1.getTopRanks(3);
@@ -173,9 +172,9 @@ public class Player extends EntityB {
                 if (gasCount < 1) {
                     speed = 5;
                 } else if (onRoadOn && gasCount >= 1) {
-                    speed = 26;
+                    speed = 23;
                 } else if (!onRoadOn && gasCount >= 1) {
-                    speed = 7;
+                    speed = 6;
                 }
             }
             // best playable speeds are 26 on road, 7 off road
@@ -231,7 +230,9 @@ public class Player extends EntityB {
 
             if (packageDelivered == winSetter) {
                 gp.ui.gameFinished = true;
-                gp.playSE(5);
+                gp.playSE(14);
+                // also can use 5 for win sound
+                double endCash = playerMoney;
                 double playTime = UI.playTime;
                 GameSaver saver = null;
                 try {
@@ -239,7 +240,8 @@ public class Player extends EntityB {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                GameRecord record = new GameRecord("Trucker", playTime);
+
+                GameRecord record = new GameRecord("Trucker", playTime, endCash);
                 saver.addRecord(record);
 
                 saver.saveToJSON();
@@ -249,9 +251,13 @@ public class Player extends EntityB {
             }
 
             String objectName = gp.obj[i].name;
+            String[] randomStringList = {"YEAH BUDDDDYYY! You found some cash. You get $", "OH YEAHH!! you picked up $", "WHAAAAT??!? You find money while driving. You get $", "LETS GO! You found $", "One man's trash is another man's treasure, or maybe it's just treasure. You picked up $", "Another day another dollar! You found $", "THAT'S WHAT IM TALKING ABOUT! You picked up $"};
+            Random rand = new Random();
+            int randomIndex = rand.nextInt(randomStringList.length);
+            String randomString = randomStringList[randomIndex];
             switch (objectName) {
                 case "Radio":
-                    gp.playSE(2);
+                    gp.playSE(12);
                     neededItems.remove("Radio");
                     npc1Flag = false;
                     gp.ui.showMessage("The truck radio is broken, fortunately you find a spare! Start your playlist with the space bar!");
@@ -259,10 +265,9 @@ public class Player extends EntityB {
                     break;
                 /* add key to inventory */
 
+
                 case "TruckKey":
-                    gp.playSE(2);
-                    /* add key to inventory */
-                    hasTruckKey++;
+                    gp.playSE(20);
                     /* remove object from game */
                     gp.obj[i] = null;
                     gp.ui.showMessage("You picked up the keys to the truck!");
@@ -284,7 +289,6 @@ public class Player extends EntityB {
                     if (neededItems.size() == 0) {
                         gp.playSE(4);
                         gp.obj[i] = null;
-                        hasTruckKey--;
                         gp.ui.showMessage("You unlocked the door!");
                     } else {
                         gp.playSE(6);
@@ -293,21 +297,12 @@ public class Player extends EntityB {
                     }
                     break;
                 case "Truck":
-                    if (true) {
-                        truckFlag = true;
-                        getPlayerImage();
-                        gp.playSE(4);
-                        gp.obj[i] = null;
-                        hasTruckKey--;
-                        gp.ui.showMessage("You crank up the truck. The faster we drive, the more cash we make - lets roll!");
-//                        speed = 46;
-                        direction = "up";
-                    }
-//                    else {
-//                        gp.playSE(6);
-//                        gp.ui.showMessage("You need the keys to the truck before you go!");
-//
-//                    }
+                    truckFlag = true;
+                    getPlayerImage();
+                    gp.playSE(17);
+                    gp.obj[i] = null;
+                    gp.ui.showMessage("You crank up the truck. The faster we drive, the more cash we make - lets roll!");
+                    direction = "up";
                     break;
                 case "Thermos":
                     gp.playSE(3);
@@ -315,20 +310,21 @@ public class Player extends EntityB {
                     gp.obj[i] = null;
                     neededItems.remove("Thermos");
                     break;
-//                case "Chest":
-//                    gp.playSE(5);
-//                    gp.ui.showMessage("You found a chest! Inside is a key!");
-//                    hasKey++;
-//                    gp.obj[i] = null;
-//                    break;
-                case "Chest":
-                    gp.ui.gameFinished = true;
-//                    gp.stopMusic();
-                    gp.playSE(5);
-//                    gp.ui.gameFinished = true;
-//                    gp.stopMusic();
-//                    gp.playSE(5);
+                case "Cash":
+                    if (cashSE % 3 == 1) {
+                        gp.playSE(23);
+                    } else if (cashSE % 3 == 2) {
+                        gp.playSE(16);
+                    } else {
+                        gp.playSE(2);
+                    }
+                    cashSE++;
+                    gp.obj[i] = null;
+                    int randomCash = (int) (Math.random() * 70) + 1;
+                    gp.ui.showMessage(randomString + randomCash + "!");
+                    playerMoney += randomCash;
                     break;
+
                 case "Desk":
                     if (deskFlag) {
                         gp.playSE(3);
@@ -350,7 +346,7 @@ public class Player extends EntityB {
                     break;
                 case "Coffee":
                     if (coffeeFlag) {
-                        gp.playSE(3);
+                        gp.playSE(18);
                         speed += 2;
                         coffeeFlag = false;
                         gp.ui.showMessage("You got your coffee! You feel POWER as caffeine courses through your veins...");
@@ -361,86 +357,57 @@ public class Player extends EntityB {
                 /* HR rep female sprite in HR office */
                 case "NPC1":
                     if (npc1Flag) {
-                        gp.playSE(2);
+                        gp.playSE(21);
                         hasKey++;
                         /* remove object from game */
                         npc1Flag = false;
                         gp.ui.showMessage("HR Coordinator: The radio and GPS in the truck are broken, take this key to the Tech Office to get the spares! ");
                         break;
                     } else {
-                        gp.playSE(8);
+                        gp.playSE(21);
                         gp.ui.showMessage("HR Coordinator: Safe travels!");
 
                     }
                     break;
                 case "GPS":
-                    gp.playSE(3);
+                    gp.playSE(13);
                     gp.obj[i] = null;
                     gp.ui.showMessage("You got the GPS! You can now see your location. You are in Mississippi!");
                     neededItems.remove("GPS");
                     break;
                 case "GasPump":
                     float gasByMoney = 100 - gasCount;
-                    if (gasCount > 94) {
+                    if (gasCount > 95) {
                         gp.playSE(8);
                         gp.ui.showMessage("You are already full on gas!");
                         break;
-                    } else if (playerMoney >= 100) {
-                        gp.playSE(3);
-                        gasCount = 100;
-                        playerMoney -= gasByMoney;
-                        gp.ui.showMessage("You fill up your gas tank! It was $" + df.format(gasByMoney) + ", gas is expensive!");
-                        break;
-                    } else {
+                    } else if (playerMoney == 0) {
                         gp.playSE(9);
                         gp.ui.showMessage("You don't have enough money to fill up your gas tank!");
+                        break;
+
+                    } else {
+                        gp.playSE(3);
+                        if (playerMoney >= gasByMoney) {
+                            playerMoney -= gasByMoney;
+                            gasCount = 100;
+                            gp.ui.showMessage("You filled up your gas tank! It was $" + df.format(gasByMoney) + ", gas is expensive!");
+                        } else {
+                            gasCount += playerMoney;
+                            playerMoney = 0;
+                            gp.ui.showMessage("You use all of your money try to fill up your gas tank. You are out of cash!");
+                        }
                         break;
                     }
 
                 case "Package":
-//                    if (currentDestination == null) {
-//                        //packageCounter += 1;
-//                        gp.ui.showMessage("You deliver results!");
-//                        break;
-//                    }
-
                     OBJ_Package shipping = (OBJ_Package) gp.obj[i];
-
                     if (!pickupPackage(shipping) && !deliverAndPickupPackage(shipping)) {
-
                         gp.playSE(8);
-
                         gp.ui.showMessage("You are currently in " + shipping.getState() + ". You need to go to " + getCurrentDestination() + ".");
-
                     }
-
-//                    //  ((OBJ_Package) gp.obj[i]).getPickedUp();
-//                    State currentState = ((OBJ_Package) gp.obj[i]).getState();
-//                    if (currentDestination.getName().equals(currentState.getName())) {
-//                        ((OBJ_Package) gp.obj[i]).getPickedUp();
-//                        gp.playSE(3);
-//                        gp.ui.showMessage("You picked up package in the great state of " + currentState.getName() + "You are going to the state of " + currentDestination.getName() + " " + currentState.getSaying());
-//                        removeDestination(currentState);
-//                        currentDestination = getNextDestination();
-//                        if (currentDestination == null) {
-//                            gp.ui.showMessage("You picked up everything");
-//                        }
-//
-//                        gp.ui.showMessage("you got these left as your destinations: " + destinations);
-//                        speed -= 4;
-//                        break;
-//                    } else {
-//                        gp.playSE(8);
-//                        //gp.ui.showMessage("HR Coordinator: Safe travels!");
-//                        gp.ui.showMessage("You are current in " + currentState.getName() + ".  You supposed to pick up " + currentDestination.getName() + "you got these left as your destinations: " + destinations);
-//
-//                    }
-//                    break;
-
-
             }
         }
-
     }
 
     public void draw(Graphics2D g2) {
@@ -564,7 +531,7 @@ public class Player extends EntityB {
                 gp.playSE(3);
             }
 
-            double money = 500 - (UI.playTime - playerTimeMoney) < 200 ? 200 : 500 - (UI.playTime - playerTimeMoney);
+            double money = 300 - (UI.playTime - playerTimeMoney) < 100 ? 100 : 300 - (UI.playTime - playerTimeMoney);
             playerTimeMoney = UI.playTime;
             playerMoney += money;
 
