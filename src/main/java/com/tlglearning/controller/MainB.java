@@ -2,10 +2,6 @@ package com.tlglearning.controller;
 
 import javax.swing.*;
 
-/* NEED TO UNCOMMENT ITEMS BELOW
-   - MUSIC (gamepanelb)
-   - Red door (assetsetter)
- */
 public class MainB {
 
     public static void main(String[] args) {

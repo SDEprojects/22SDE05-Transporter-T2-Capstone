@@ -172,7 +172,7 @@ public class Player extends EntityB {
                 if (gasCount < 1) {
                     speed = 5;
                 } else if (onRoadOn && gasCount >= 1) {
-                    speed = 25;
+                    speed = 23;
                 } else if (!onRoadOn && gasCount >= 1) {
                     speed = 6;
                 }
