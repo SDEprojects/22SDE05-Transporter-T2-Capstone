@@ -3,6 +3,8 @@ package com.tlglearning.controller;
 import com.tlglearning.model.State;
 import com.tlglearning.model.objects.*;
 
+import java.util.Random;
+
 public class AssetSetter {
 
     GamePanelB gp;
@@ -13,9 +15,9 @@ public class AssetSetter {
 
     public void setObject(){
 
-        gp.obj[1] = new OBJ_Door1();
-        gp.obj[1].worldX = 4 * gp.tileSize;
-        gp.obj[1].worldY = 181 * gp.tileSize;
+//        gp.obj[1] = new OBJ_Door1();
+//        gp.obj[1].worldX = 4 * gp.tileSize;
+//        gp.obj[1].worldY = 181 * gp.tileSize;
 
         gp.obj[3] = new OBJ_Door();
         gp.obj[3].worldX = 34 * gp.tileSize;
@@ -170,11 +172,19 @@ public class AssetSetter {
         gp.obj[53] = new OBJ_Package(State.WV);
         gp.obj[53].worldX = 152 * gp.tileSize;
         gp.obj[53].worldY = 45 * gp.tileSize;
+        createCash(54,55);
+            }
 
-
-
+    public void createCash(int startBound,int totalCoins){
+        Random ran = new Random();
+        for(int i = 0; i < totalCoins; i++,startBound++){
+            int randomX = ran.nextInt(230) + 5;
+            int randomY = ran.nextInt(170) + 5;
+            gp.obj[startBound] = new OBJ_Cash();
+            gp.obj[startBound].worldX = randomX * gp.tileSize;
+            gp.obj[startBound].worldY = randomY * gp.tileSize;
+        }
     }
-
 }
 
 

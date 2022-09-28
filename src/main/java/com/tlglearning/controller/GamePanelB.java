@@ -39,7 +39,7 @@ public class GamePanelB extends JPanel implements Runnable {
     Thread gameThread;
 
 
-    public SuperObject obj[] = new SuperObject[55];
+    public SuperObject obj[] = new SuperObject[115];
 
 
     public GamePanelB() {

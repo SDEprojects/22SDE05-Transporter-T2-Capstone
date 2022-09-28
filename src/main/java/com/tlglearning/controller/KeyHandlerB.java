@@ -45,11 +45,14 @@ public class KeyHandlerB implements KeyListener {
                     spacePressed = true;
 
                     if (!music.isPlaying){
-                        if (musicChoice % 3 == 1) {
+                        if (musicChoice % 4 == 1) {
                             music.setMainFile(0);
-                        } else if (musicChoice % 3 == 2) {
+                        } else if (musicChoice % 4 == 2) {
                             music.setMainFile(1);
-                        } else {
+                        }else if (musicChoice % 4 == 3) {
+                            music.setMainFile(3);
+                        }
+                        else {
                             music.setMainFile(2);
                         }
                         music.playMain();

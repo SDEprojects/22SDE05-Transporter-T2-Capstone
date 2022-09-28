@@ -10,9 +10,9 @@ public class Sound {
 
     static Clip clip;
     static Clip clip1;
-    URL soundURL[] = new URL[13];
+    URL soundURL[] = new URL[24];
 
-    static URL soundURLMain[] = new URL[3];
+    static URL soundURLMain[] = new URL[4];
 
     public boolean isPlaying = false;
 
@@ -24,6 +24,7 @@ public class Sound {
         soundURLMain[0] = getClass().getResource("/sounds/musictheme_dropkickmurph.wav");
         soundURLMain[1] = getClass().getResource("/sounds/cornered8bit.wav");
         soundURLMain[2] = getClass().getResource("/sounds/drake8bit.wav");
+        soundURLMain[3] = getClass().getResource("/sounds/80s_intro.wav");
 
         /* success sounds */
         soundURL[2] = getClass().getResource("/sounds/coin.wav");
@@ -36,6 +37,19 @@ public class Sound {
         soundURL[8] = getClass().getResource("/sounds/cursor.wav");
         soundURL[9] = getClass().getResource("/sounds/receivedamage.wav");
         soundURL[10] = getClass().getResource("/sounds/gameover.wav");
+        soundURL[11] = getClass().getResource("/sounds/truckkey.wav");
+        soundURL[12] = getClass().getResource("/sounds/radio.wav");
+        soundURL[13] = getClass().getResource("/sounds/gps.wav");
+        soundURL[14] = getClass().getResource("/sounds/wingame.wav");
+        soundURL[15] = getClass().getResource("/sounds/intro.wav");
+        soundURL[16] = getClass().getResource("/sounds/cashpickup.wav");
+        soundURL[17] = getClass().getResource("/sounds/truckengine.wav");
+        soundURL[18] = getClass().getResource("/sounds/sippingcoffee.wav");
+        soundURL[19] = getClass().getResource("/sounds/80s_intro.wav");
+        soundURL[20] = getClass().getResource("/sounds/keyjingle.wav");
+        soundURL[21] = getClass().getResource("/sounds/npclaugh.wav");
+        soundURL[22] = getClass().getResource("/sounds/lose_nonono.wav");
+        soundURL[23] = getClass().getResource("/sounds/cash_register.wav");
 
 
 
