@@ -26,7 +26,7 @@ public class GamePanelB extends JPanel implements Runnable {
     boolean soundEffectFlag = true;
 
     public TileManager tileM = new TileManager(this);
-    KeyHandlerB keyH = new KeyHandlerB();
+    KeyHandler keyH = new KeyHandler();
     Sound sound = new Sound();
     Sound music = new Sound();
 
@@ -51,12 +51,7 @@ public class GamePanelB extends JPanel implements Runnable {
     }
 
     public void setUpGame() {
-
         aSetter.setObject();
-
-//        playMusic(0);
-
-//        playMusic(0);
 
     }
 
@@ -151,9 +146,6 @@ public class GamePanelB extends JPanel implements Runnable {
             }
         });
         sound1.start();
-
-//        sound.setFile(i);
-//        sound.play();
     }
 
     public void sleep(int i) {

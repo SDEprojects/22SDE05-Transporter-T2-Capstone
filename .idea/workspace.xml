@@ -11,10 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="f4711293-45e3-4cd7-8421-91b59df4433d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GamePanelB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/GamePanelB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/KeyHandlerB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/KeyHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/MainB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/controller/UI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/objects/OBJ_Door1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/tlglearning/model/objects/OBJ_Door1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/.keep" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -57,13 +63,15 @@
     "Downloaded.Files.Path.Enabled": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "true",
-    "Repository.Attach.Sources": "true",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "jdk.selected.JAVA_MODULE": "corretto-11",
     "last_opened_file_path": "/Users/henblair/Desktop/My Stuff/SDE Apprenticeship/22SDE05-Transporter-T2-Capstone/src/main/resources",
-    "project.structure.last.edited": "Artifacts",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.36091954",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
@@ -79,52 +87,100 @@
       <recent name="$PROJECT_DIR$/src/main/resources/objects" />
       <recent name="$PROJECT_DIR$/src/main/resources/sounds" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.tlglearning.model" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.MainB (1)">
-    <configuration name="AppLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tlglearning.app.AppLauncher" />
-      <module name="capstone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.tlglearning.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainB (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tlglearning.controller.MainB" />
+  <component name="RunManager" selected="JUnit.PlayerTest">
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="22SDE05-Transporter-T2-Capstone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tlglearning.controller.*" />
+          <option name="PATTERN" value="com.tlglearning.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.tlglearning.model" />
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.model.PlayerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.tlglearning.controller.MainB" />
-      <module name="Capstonev2.1" />
+    <configuration name="PlayerTest.deliverAndPickupPackage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="22SDE05-Transporter-T2-Capstone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.tlglearning.controller.*" />
+          <option name="PATTERN" value="com.tlglearning.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.tlglearning.model" />
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.model.PlayerTest" />
+      <option name="METHOD_NAME" value="deliverAndPickupPackage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.getNextDestination" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="22SDE05-Transporter-T2-Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tlglearning.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tlglearning.model" />
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.model.PlayerTest" />
+      <option name="METHOD_NAME" value="getNextDestination" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.pickupPackage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="22SDE05-Transporter-T2-Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tlglearning.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tlglearning.model" />
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.model.PlayerTest" />
+      <option name="METHOD_NAME" value="pickupPackage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.setDestinations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="22SDE05-Transporter-T2-Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tlglearning.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.tlglearning.model" />
+      <option name="MAIN_CLASS_NAME" value="com.tlglearning.model.PlayerTest" />
+      <option name="METHOD_NAME" value="setDestinations" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainB (1)" />
-        <item itemvalue="Application.MainB" />
-        <item itemvalue="Application.AppLauncher" />
+        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.PlayerTest.setDestinations" />
+        <item itemvalue="JUnit.PlayerTest.pickupPackage" />
+        <item itemvalue="JUnit.PlayerTest.deliverAndPickupPackage" />
+        <item itemvalue="JUnit.PlayerTest.getNextDestination" />
       </list>
     </recent_temporary>
   </component>

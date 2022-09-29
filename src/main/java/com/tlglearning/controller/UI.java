@@ -242,7 +242,7 @@ public class UI {
             gp.gameThread.stop();
 
         } else {
-            if (!KeyHandlerB.enterPressed) {
+            if (!KeyHandler.enterPressed) {
                 if (introScreen){
                     gp.playMusic(19);
                     introScreen = false;
@@ -341,16 +341,16 @@ public class UI {
                 g2.drawString("Press a number 2-5 to change the # of packages to win.", x1-130, y1-120);
 
                 g2.drawString(text2, x2-20, y2-20);
-                if (KeyHandlerB.twoPressed) {
+                if (KeyHandler.twoPressed) {
                     Player.winSetter = 2;
                 }
-                if (KeyHandlerB.threePressed) {
+                if (KeyHandler.threePressed) {
                     Player.winSetter = 3;
                 }
-                if (KeyHandlerB.fourPressed) {
+                if (KeyHandler.fourPressed) {
                     Player.winSetter = 4;
                 }
-                if (KeyHandlerB.fivePressed) {
+                if (KeyHandler.fivePressed) {
                     Player.winSetter = 5;
                 }
 
@@ -361,14 +361,14 @@ public class UI {
 
 
             }
-            if(KeyHandlerB.enterPressed && stopIntroMusic){
+            if(KeyHandler.enterPressed && stopIntroMusic){
                 gp.stopMusic();
                 stopIntroMusic = false;
             }
             /* message chat window */
-            if (KeyHandlerB.mPressed && KeyHandlerB.enterPressed && !KeyHandlerB.hPressed && !gameLost && !gameFinished) {
-                KeyHandlerB.hPressed = false;
-                KeyHandlerB.mPressed = true;
+            if (KeyHandler.mPressed && KeyHandler.enterPressed && !KeyHandler.hPressed && !gameLost && !gameFinished) {
+                KeyHandler.hPressed = false;
+                KeyHandler.mPressed = true;
 
                 String text;
                 int textLength;
@@ -395,9 +395,9 @@ public class UI {
 
             }
 
-            if (KeyHandlerB.hPressed && KeyHandlerB.enterPressed && !KeyHandlerB.mPressed && !gameLost && !gameFinished) {
-                KeyHandlerB.mPressed = false;
-                KeyHandlerB.hPressed = true;
+            if (KeyHandler.hPressed && KeyHandler.enterPressed && !KeyHandler.mPressed && !gameLost && !gameFinished) {
+                KeyHandler.mPressed = false;
+                KeyHandler.hPressed = true;
 
                 String text;
                 int textLength;
@@ -444,7 +444,7 @@ public class UI {
                 g2.drawString(text8, x + 60, 145);
 
             }
-            if (KeyHandlerB.enterPressed && !gameLost && !gameFinished) {
+            if (KeyHandler.enterPressed && !gameLost && !gameFinished) {
 
                 /* static display, inventory, destination, state, while in truck */
                 if (Player.truckFlag) {

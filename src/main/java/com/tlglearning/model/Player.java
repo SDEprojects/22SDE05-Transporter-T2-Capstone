@@ -13,7 +13,7 @@ import java.util.*;
 public class Player extends EntityB {
 
     GamePanelB gp;
-    KeyHandlerB keyH;
+    KeyHandler keyH;
     public static ArrayList<String> neededItems = new ArrayList<>(Arrays.asList("GPS", "Coffee", "Radio", "Soda", "Folder", "Truck Key", "Thermos"));
 
 
@@ -49,7 +49,7 @@ public class Player extends EntityB {
     private int cashSE = 1;
 
 
-    public Player(GamePanelB gp, KeyHandlerB keyH) {
+    public Player(GamePanelB gp, KeyHandler keyH) {
         this.gp = gp;
         this.keyH = keyH;
 

@@ -6,7 +6,7 @@ import com.tlglearning.view.Sound;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyHandlerB implements KeyListener {
+public class KeyHandler implements KeyListener {
 
     public boolean upPressed, downPressed, leftPressed, rightPressed;
     public static boolean spacePressed, enterPressed, hPressed, mPressed, twoPressed, threePressed, fourPressed, fivePressed;
