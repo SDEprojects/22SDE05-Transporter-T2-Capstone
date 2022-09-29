@@ -9,10 +9,12 @@
         <module name="22SDE05-Transporter-T2-Capstone" />
         <module name="capstone" />
         <module name="Capstonev2.1" />
+        <module name="Blairv2.1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="11">
       <module name="22SDE05-Transporter-T2-Capstone" target="11" />
+      <module name="Blairv2.1" target="1.5" />
       <module name="Capstonev2.1" target="11" />
     </bytecodeTargetLevel>
   </component>
